@@ -22,19 +22,9 @@ var facing
 var ground_frame = 0
 var ground_frame2 = -1
 
-var start_pos = Vector2()
-func _ready():
-	start_pos = position
-	$AniPlay.stop()
-	$Sprite.frame = 0
-
-#func respawn():
-	#modulate = Color(1,1,1)
-	#position = start_pos
-	#velocity = Vector2()
-	##_ready()
-	#ammo_in = ammo_size
-	#ammo_out = ammo_size*2
+#func _ready():
+#	$AniPlay.stop()
+#	$Sprite.frame = 0
 
 
 
@@ -57,7 +47,8 @@ func _physics_process(_delta):
 			if $Sprite.rotation_degrees < 180: $Sprite.rotation = 0
 			else: $Sprite.rotation_degrees = 180
 	
-	else:
+	
+	else:#holder
 		$Col.disabled = true
 		if !busy && holder.state != 0:
 			if ammo_in:
@@ -165,9 +156,6 @@ func _process(_delta):
 		
 		if ammo_in + ammo_out <= 0:
 			modulate = Color(0.5, 0.5, 0.5)
-			#ammo_out -= 1
-			#if ammo_out < -999: respawn()
-			#$Sprite.frame - 
 			$Sprite.frame = ground_frame2 if (ground_frame2 != -1) else ground_frame
 		
 		else:

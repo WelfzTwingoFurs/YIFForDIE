@@ -3,12 +3,11 @@ extends "res://Scripts/GunGeneric.gd"
 
 
 func _ready():
-	start_pos = position
 	projectile = preload("res://Entities/RocketGeneric.tscn")
 	
 	
 	name_string = "RPG Rocket Launcher"
-	gravity = 45
+	gravity = 75
 	handstate = 5
 	
 	ammo_in = 1
@@ -35,8 +34,9 @@ func shoot():
 	
 	$Sfx.shoot()
 	$Flash.flip_v = randi() % 2
-	$Flash2.scale.x  = holder.facing
-	$Flash2.position.x = flash_pos2 * holder.facing
+	if holder:
+		$Flash2.scale.x  = holder.facing
+	$Flash2.position.x = flash_pos2 * (holder.facing if holder else 1)
 	$Flash2.flip_v = randi() % 2
 	
 	var instance = projectile.instantiate()

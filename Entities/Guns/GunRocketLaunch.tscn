@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dypor01ctulc1" path="res://Assets/Guns/gunrocketlaunch.png" id="3_xk535"]
 [ext_resource type="Script" path="res://Scripts/GunAudioGeneric.gd" id="4_icgeb"]
 [ext_resource type="AudioStream" uid="uid://05jdth5quxua" path="res://Assets/Guns/gunrocketlaunch_shoot.wav" id="5_vos2o"]
-[ext_resource type="AudioStream" uid="uid://pkdq5mpoijgm" path="res://Assets/Guns/gunpistol_empty.wav" id="6_fhbll"]
+[ext_resource type="AudioStream" uid="uid://bkix6yfn4bo22" path="res://Assets/Guns/gunrevolver_empty.wav" id="7_6su5k"]
 [ext_resource type="AudioStream" uid="uid://cdvd1kyeqc3x7" path="res://Assets/Guns/gunrocketlaunch_reload.wav" id="7_nmy47"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kmrj2"]
@@ -240,11 +240,12 @@ texture = ExtResource("3_dy5pp")
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_xk535")
 vframes = 4
+frame = 1
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("4_icgeb")
 shoot_sfx = ExtResource("5_vos2o")
-empty_sfx = ExtResource("6_fhbll")
+empty_sfx = ExtResource("7_6su5k")
 release_sfx = null
 reload_sfx = ExtResource("7_nmy47")
 charge_sfx = null

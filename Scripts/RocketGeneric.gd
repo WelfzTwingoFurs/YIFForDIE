@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var stun = 50
 var facing = 1
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	move_and_slide()
 	velocity.y += gravity
 	

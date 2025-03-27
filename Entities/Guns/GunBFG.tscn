@@ -1,16 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://cvpmj3lol5d3g"]
+[gd_scene load_steps=14 format=3 uid="uid://cvpmj3lol5d3g"]
 
 [ext_resource type="Script" path="res://Entities/Guns/GunBFG.gd" id="1_4s56b"]
 [ext_resource type="Texture2D" uid="uid://bmwgeh3pscxfq" path="res://Assets/Guns/gunbfg.png" id="1_y0tcs"]
 [ext_resource type="Texture2D" uid="uid://bvt6tv0e7y26g" path="res://Assets/ParticlesEffects/gun_muzzleflash.png" id="2_ssmmr"]
-[ext_resource type="Texture2D" uid="uid://d0irodriuwyrs" path="res://Assets/ParticlesEffects/gun_muzzlesmoke.png" id="3_q2dig"]
+[ext_resource type="AudioStream" uid="uid://ddh7lw6ft14dv" path="res://Assets/Guns/gunbfg_shoot.wav" id="4_m43jr"]
+[ext_resource type="AudioStream" uid="uid://bkix6yfn4bo22" path="res://Assets/Guns/gunrevolver_empty.wav" id="5_ameg8"]
 [ext_resource type="Script" path="res://Scripts/GunAudioGeneric.gd" id="5_xujvt"]
-[ext_resource type="AudioStream" uid="uid://05jdth5quxua" path="res://Assets/Guns/gunrocketlaunch_shoot.wav" id="6_n67qv"]
-[ext_resource type="AudioStream" uid="uid://pkdq5mpoijgm" path="res://Assets/Guns/gunpistol_empty.wav" id="7_srkts"]
-[ext_resource type="AudioStream" uid="uid://cdvd1kyeqc3x7" path="res://Assets/Guns/gunrocketlaunch_reload.wav" id="8_7afhe"]
+[ext_resource type="AudioStream" uid="uid://blhassocklcsp" path="res://Assets/Guns/gunbfg_charge.wav" id="6_vhvwd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kmrj2"]
-radius = 12.6256
+radius = 12.4453
 
 [sub_resource type="Animation" id="Animation_cva7p"]
 resource_name = "empty"
@@ -39,7 +38,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [2]
 }
 
 [sub_resource type="Animation" id="Animation_3m7e5"]
@@ -55,7 +54,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [2]
 }
 
 [sub_resource type="Animation" id="Animation_bgxty"]
@@ -115,16 +114,19 @@ tracks/0/keys = {
 }
 tracks/1/type = "method"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [true],
 "method": &"set_busy"
+}, {
+"args": [4],
+"method": &"set_handstate"
 }, {
 "args": [false],
 "method": &"set_busy"
@@ -137,10 +139,24 @@ tracks/2/path = NodePath("Sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 0]
+"values": [0, 1, 0, 2]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sfx")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"charge"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r06yt"]
@@ -171,11 +187,11 @@ vframes = 3
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("5_xujvt")
-shoot_sfx = ExtResource("6_n67qv")
-empty_sfx = ExtResource("7_srkts")
+shoot_sfx = ExtResource("4_m43jr")
+empty_sfx = ExtResource("5_ameg8")
 release_sfx = null
-reload_sfx = ExtResource("8_7afhe")
-charge_sfx = null
+reload_sfx = null
+charge_sfx = ExtResource("6_vhvwd")
 
 [node name="TooClose" type="Area2D" parent="."]
 scale = Vector2(1.5, 2)
@@ -185,11 +201,6 @@ collision_mask = 2
 [node name="Col" type="CollisionShape2D" parent="TooClose"]
 scale = Vector2(3, 1)
 shape = SubResource("CircleShape2D_kmrj2")
-
-[node name="Flash2" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(65.487, -6.05946)
-texture = ExtResource("3_q2dig")
 
 [node name="Flash" type="Sprite2D" parent="."]
 visible = false

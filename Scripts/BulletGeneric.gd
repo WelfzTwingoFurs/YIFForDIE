@@ -54,19 +54,22 @@ func _draw():
 	draw_line((start_pos - position).rotated(-rotation)/scale, Vector2(0,0), Color(color,color,color,color), color*2)
 
 
+var dontdamagetwice = false
 func _on_area_body_entered(body):
-	if (body != holder) && body.is_in_group("player") && ((tag == -1) or (body.was_tag != tag)):
-		body.was_tag = tag
-		
-		var instance = hitstar.instantiate()
-		instance.position = position
-		get_parent().add_child(instance)
-		
-		position -= velocity
-		body.take_damage(damage, knockback, stun, self, tag)
-		queue_free()
-	else:
-		print("fuck")
+	if !dontdamagetwice:
+		if (body != holder) && body.is_in_group("player") && ((tag == -1) or (body.was_tag != tag)):
+			body.was_tag = tag
+			dontdamagetwice = true
+			
+			var instance = hitstar.instantiate()
+			instance.position = position
+			get_parent().add_child(instance)
+			
+			position -= velocity
+			body.take_damage(damage, knockback, stun, self, tag)
+			queue_free()
+		else:
+			print("fuck")
 
 
 var hitstar = preload("res://Entities/ParticlesEffects/Effect_Hitstar.tscn")

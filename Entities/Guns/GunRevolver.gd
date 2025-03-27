@@ -3,7 +3,6 @@ extends "res://Scripts/GunGeneric.gd"
 
 
 func _ready():
-	start_pos = position
 	projectile = preload("res://Entities/BulletGeneric.tscn")
 	guncase = preload("res://Entities/ParticlesEffects/Particle_Guncase.tscn")
 	

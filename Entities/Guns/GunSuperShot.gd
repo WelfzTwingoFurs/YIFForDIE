@@ -3,12 +3,11 @@ extends "res://Scripts/GunGeneric.gd"
 
 
 func _ready():
-	start_pos = position
 	projectile = preload("res://Entities/BulletGeneric.tscn")
 	magazine = preload("res://Entities/ParticlesEffects/Particle_Gunclip.tscn")
 	guncase = preload("res://Entities/ParticlesEffects/Particle_Guncase.tscn")
 	
-	gravity = 35
+	gravity = 50
 	handstate = 3
 	
 	ammo_in = 2

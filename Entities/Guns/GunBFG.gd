@@ -3,12 +3,11 @@ extends "res://Scripts/GunGeneric.gd"
 
 
 func _ready():
-	start_pos = position
-	projectile = preload("res://Entities/RocketGeneric.tscn")
+	projectile = preload("res://Entities/BFGprojectile.tscn")
 	
 	
 	name_string = "BFG Bio Force Gun"
-	gravity = 45
+	gravity = 95
 	handstate = 4
 	
 	ammo_in = 1

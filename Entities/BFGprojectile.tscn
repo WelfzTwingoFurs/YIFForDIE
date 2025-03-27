@@ -1,0 +1,128 @@
+[gd_scene load_steps=9 format=3 uid="uid://01yutju2o5sh"]
+
+[ext_resource type="Script" path="res://Entities/BFGprojectile.gd" id="1_eplxw"]
+[ext_resource type="Texture2D" uid="uid://dis7i7y54i44c" path="res://Assets/Guns/bfgball.png" id="2_8wspr"]
+[ext_resource type="AudioStream" uid="uid://da254l843xees" path="res://Assets/Guns/gunbfg_shock.wav" id="3_82wiv"]
+[ext_resource type="AudioStream" uid="uid://b6q8hodsgjx5v" path="res://Assets/Guns/gunbfg_boom.wav" id="4_s6an3"]
+
+[sub_resource type="Animation" id="Animation_cw8f8"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"random_flips"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0hror"]
+resource_name = "explode"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sfx2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mm6kn"]
+_data = {
+"explode": SubResource("Animation_0hror"),
+"idle": SubResource("Animation_cw8f8")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j7a4i"]
+radius = 38.1758
+
+[node name="BFGball" type="CharacterBody2D"]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
+script = ExtResource("1_eplxw")
+
+[node name="AniPlay" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mm6kn")
+}
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_8wspr")
+vframes = 6
+
+[node name="Col" type="CollisionShape2D" parent="."]
+position = Vector2(-0.109563, 0)
+shape = SubResource("CircleShape2D_j7a4i")
+
+[node name="RayCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 150)
+collision_mask = 3
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_82wiv")
+
+[node name="Sfx2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_s6an3")
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="Col" type="CollisionShape2D" parent="Area"]
+scale = Vector2(1.3, 1.3)
+shape = SubResource("CircleShape2D_j7a4i")
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
