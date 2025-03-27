@@ -84,7 +84,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("Flash:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -108,7 +108,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.6, 2.1, 3.6, 4.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 1, 0]
+"values": [3, 1, 2, 1, 0]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -267,8 +267,7 @@ texture = ExtResource("2_j6orw")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_joosm")
-vframes = 3
-frame = 2
+vframes = 4
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("4_t27vn")

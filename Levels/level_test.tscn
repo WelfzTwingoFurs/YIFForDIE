@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4f0x6mepd7rj"]
+[gd_scene load_steps=17 format=3 uid="uid://b4f0x6mepd7rj"]
 
 [ext_resource type="Script" path="res://Levels/LevelScript.gd" id="1_c54gj"]
 [ext_resource type="PackedScene" uid="uid://b6amf2ybssyrp" path="res://Assets/tileauto_grass.tscn" id="2_a8huf"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://7xamq8jt3ci2" path="res://Assets/Guns/gunrevolver.png" id="12_uge3f"]
 [ext_resource type="PackedScene" uid="uid://b4ethhcu0cjoq" path="res://Entities/Guns/GunRevolver.tscn" id="13_24fwg"]
 [ext_resource type="PackedScene" uid="uid://bq1h4jjrntgle" path="res://Entities/Explosion.tscn" id="14_bd86b"]
+[ext_resource type="Texture2D" uid="uid://bmwgeh3pscxfq" path="res://Assets/Guns/gunbfg.png" id="14_vulr5"]
+[ext_resource type="PackedScene" uid="uid://cvpmj3lol5d3g" path="res://Entities/Guns/GunBFG.tscn" id="15_n3jyn"]
 
 [node name="sceneTWO" type="Node2D"]
 script = ExtResource("1_c54gj")
@@ -27,7 +29,7 @@ layer_0/tile_data = PackedInt32Array(262163, 720898, 3, 196627, 720898, 2, 13109
 
 [node name="pistol1" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 100, 1)
-position = Vector2(-424.66, 18.8662)
+position = Vector2(-1103.23, 87.6051)
 texture = ExtResource("3_b8r78")
 vframes = 5
 script = ExtResource("4_eahrg")
@@ -37,9 +39,9 @@ ammo_out = 9999
 
 [node name="sniper1" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 100, 1)
-position = Vector2(-5.60724, 24.8688)
+position = Vector2(-684.176, 93.6077)
 texture = ExtResource("6_0tb58")
-vframes = 2
+vframes = 4
 script = ExtResource("4_eahrg")
 item = ExtResource("7_r3ncn")
 timer = 10.0
@@ -47,9 +49,9 @@ ammo_out = 9999
 
 [node name="supershot" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 100, 1)
-position = Vector2(-243.751, 7.43256)
+position = Vector2(-922.32, 76.1715)
 texture = ExtResource("8_fiqei")
-vframes = 3
+vframes = 4
 script = ExtResource("4_eahrg")
 item = ExtResource("9_b6283")
 timer = 10.0
@@ -57,9 +59,9 @@ ammo_out = 9999
 
 [node name="revolver1" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 100, 1)
-position = Vector2(224.876, 10.602)
+position = Vector2(-453.693, 79.341)
 texture = ExtResource("12_uge3f")
-vframes = 3
+vframes = 4
 script = ExtResource("4_eahrg")
 item = ExtResource("13_24fwg")
 timer = 10.0
@@ -67,11 +69,21 @@ ammo_out = 9999
 
 [node name="rocket1" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 100, 1)
-position = Vector2(494.87, 12.1894)
+position = Vector2(-140.092, 79.341)
 texture = ExtResource("10_6nss4")
-vframes = 2
+vframes = 4
 script = ExtResource("4_eahrg")
 item = ExtResource("11_otl3o")
+timer = 10.0
+ammo_out = 9999
+
+[node name="bfg1" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 100, 1)
+position = Vector2(184.6, 79.341)
+texture = ExtResource("14_vulr5")
+vframes = 2
+script = ExtResource("4_eahrg")
+item = ExtResource("15_n3jyn")
 timer = 10.0
 ammo_out = 9999
 

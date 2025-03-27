@@ -144,7 +144,7 @@ func col_disable():
 
 ####################################################################################################
 
-var damage = 65
+var damage = 70
 var knockback = 1000
 var stun = 150
 var knock_replace = true

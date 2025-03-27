@@ -21,7 +21,8 @@ func _ready():
 	auto_shoot = true
 	auto_reload = true
 	auto_refire = false
-
+	
+	ground_frame = 4
 #func set_flash_pos(): flash_pos = $Flash.position.x
 
 func eject_case():

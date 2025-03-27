@@ -18,6 +18,10 @@ var wait_shoot = false
 
 var facing
 
+
+var ground_frame = 0
+var ground_frame2 = -1
+
 var start_pos = Vector2()
 func _ready():
 	start_pos = position
@@ -86,10 +90,13 @@ func _physics_process(_delta):
 				#if ((auto_reload && Input.is_action_pressed("shoot"+str(holder.player))) or Input.is_action_just_pressed("shoot"+str(holder.player))):
 				if (!wait_shoot or (wait_shoot && $AniPlay.current_animation != "shoot"))  &&  (auto_reload or Input.is_action_just_pressed("shoot"+str(holder.player))):
 					
-					close_check()
+					#if $AniPlay.current_animation != "shoot":
+					#	close_check()#condition so that it doesn't kick automatically late into the animationaa REMOVED/COMMENTED IT FOR THIS REASON TOO
 					if holder.anibusy != 3:
 						busy = true
 						$AniPlay.play("reload")
+					
+					
 				
 			else:
 				if ((auto_reload or auto_shoot) && Input.is_action_pressed("shoot"+str(holder.player))) or Input.is_action_just_pressed("shoot"+str(holder.player)):
@@ -99,7 +106,12 @@ func _physics_process(_delta):
 						$AniPlay.play("empty")
 					
 				
-
+		
+		
+		
+		#kick while reloading, deactivated cuz not sure why it will always kick when close??
+		#elif busy && (holder.state != 0) && ($AniPlay.current_animation == "reload") && Input.is_action_just_pressed("shoot"+str(holder.player)):
+		#	close_check()
 
 
 
@@ -127,7 +139,8 @@ func _process(_delta):
 	
 	if holder:
 		if $AniPlay.current_animation == "reload": $AniPlay.speed_scale = 3
-		elif $Sprite.frame == 4: $Sprite.frame = 0
+		elif !$AniPlay.is_playing() && (($Sprite.frame == ground_frame) or ($Sprite.frame == (ground_frame2 if (ground_frame2 != -1) else ground_frame))):
+			$AniPlay.play("idle")
 		
 		
 		match handstate:
@@ -146,18 +159,25 @@ func _process(_delta):
 		
 		holder.set_handed(handstate)
 		
-		
-	else:
+	
+	else:#not holder
 		$Flash.visible = false
 		
 		if ammo_in + ammo_out <= 0:
 			modulate = Color(0.5, 0.5, 0.5)
 			#ammo_out -= 1
 			#if ammo_out < -999: respawn()
+			#$Sprite.frame - 
+			$Sprite.frame = ground_frame2 if (ground_frame2 != -1) else ground_frame
 		
 		else:
-			if $AniPlay.current_animation == "reload": $AniPlay.speed_scale = 0
-			elif $AniPlay.current_animation != "shoot": $AniPlay.play("idle")
+			if $AniPlay.current_animation == "reload":
+				$AniPlay.speed_scale = 0
+				#if (ground_frame2 != -1): $Sprite.frame = ground_frame2
+				$Sprite.frame = ground_frame2 if (ground_frame2 != -1) else ground_frame
+			
+			elif $AniPlay.current_animation != "shoot": $Sprite.frame = ground_frame
+				
 		
 		
 		if Input.is_action_just_pressed("bug_shoot"):

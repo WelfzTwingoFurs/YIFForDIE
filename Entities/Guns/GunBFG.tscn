@@ -1,0 +1,202 @@
+[gd_scene load_steps=15 format=3 uid="uid://cvpmj3lol5d3g"]
+
+[ext_resource type="Script" path="res://Entities/Guns/GunBFG.gd" id="1_4s56b"]
+[ext_resource type="Texture2D" uid="uid://bmwgeh3pscxfq" path="res://Assets/Guns/gunbfg.png" id="1_y0tcs"]
+[ext_resource type="Texture2D" uid="uid://bvt6tv0e7y26g" path="res://Assets/ParticlesEffects/gun_muzzleflash.png" id="2_ssmmr"]
+[ext_resource type="Texture2D" uid="uid://d0irodriuwyrs" path="res://Assets/ParticlesEffects/gun_muzzlesmoke.png" id="3_q2dig"]
+[ext_resource type="Script" path="res://Scripts/GunAudioGeneric.gd" id="5_xujvt"]
+[ext_resource type="AudioStream" uid="uid://05jdth5quxua" path="res://Assets/Guns/gunrocketlaunch_shoot.wav" id="6_n67qv"]
+[ext_resource type="AudioStream" uid="uid://pkdq5mpoijgm" path="res://Assets/Guns/gunpistol_empty.wav" id="7_srkts"]
+[ext_resource type="AudioStream" uid="uid://cdvd1kyeqc3x7" path="res://Assets/Guns/gunrocketlaunch_reload.wav" id="8_7afhe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kmrj2"]
+radius = 12.6256
+
+[sub_resource type="Animation" id="Animation_cva7p"]
+resource_name = "empty"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sfx")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"empty"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3m7e5"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bgxty"]
+resource_name = "reload"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reload"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"set_busy"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jmqqu"]
+resource_name = "shoot"
+length = 3.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [3],
+"method": &"set_handstate"
+}, {
+"args": [],
+"method": &"shoot"
+}, {
+"args": [4],
+"method": &"set_handstate"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_busy"
+}, {
+"args": [false],
+"method": &"set_busy"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r06yt"]
+_data = {
+"empty": SubResource("Animation_cva7p"),
+"idle": SubResource("Animation_3m7e5"),
+"reload": SubResource("Animation_bgxty"),
+"shoot": SubResource("Animation_jmqqu")
+}
+
+[node name="GunBFG" type="CharacterBody2D" groups=["grab"]]
+collision_layer = 4
+script = ExtResource("1_4s56b")
+
+[node name="Col" type="CollisionShape2D" parent="."]
+scale = Vector2(4, 1)
+shape = SubResource("CircleShape2D_kmrj2")
+
+[node name="AniPlay" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r06yt")
+}
+speed_scale = 3.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_y0tcs")
+vframes = 3
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("5_xujvt")
+shoot_sfx = ExtResource("6_n67qv")
+empty_sfx = ExtResource("7_srkts")
+release_sfx = null
+reload_sfx = ExtResource("8_7afhe")
+charge_sfx = null
+
+[node name="TooClose" type="Area2D" parent="."]
+scale = Vector2(1.5, 2)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Col" type="CollisionShape2D" parent="TooClose"]
+scale = Vector2(3, 1)
+shape = SubResource("CircleShape2D_kmrj2")
+
+[node name="Flash2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(65.487, -6.05946)
+texture = ExtResource("3_q2dig")
+
+[node name="Flash" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(100, 100, 100, 1)
+position = Vector2(-126.513, -6.05946)
+texture = ExtResource("2_ssmmr")
+flip_h = true
+
+[connection signal="body_entered" from="TooClose" to="." method="_on_too_close_body_entered"]
+[connection signal="body_exited" from="TooClose" to="." method="_on_too_close_body_exited"]

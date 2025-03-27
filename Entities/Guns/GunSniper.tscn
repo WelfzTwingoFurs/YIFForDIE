@@ -72,7 +72,7 @@ resource_name = "idle"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Flash:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -84,7 +84,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "method"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -285,8 +285,7 @@ texture = ExtResource("2_f154y")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_1kau1")
-vframes = 2
-frame = 1
+vframes = 3
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("4_nrlep")
@@ -302,7 +301,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Col" type="CollisionShape2D" parent="TooClose"]
-scale = Vector2(4, 1)
+scale = Vector2(3, 1)
 shape = SubResource("CircleShape2D_kmrj2")
 
 [connection signal="body_entered" from="TooClose" to="." method="_on_too_close_body_entered"]

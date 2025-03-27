@@ -1,8 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://4yts127skkgd"]
+[gd_scene load_steps=8 format=3 uid="uid://4yts127skkgd"]
 
 [ext_resource type="Script" path="res://Scripts/RocketGeneric.gd" id="1_5cqps"]
 [ext_resource type="AudioStream" uid="uid://dugsdpif3dqjj" path="res://Assets/Guns/rocket_loop.wav" id="2_kiuhb"]
 [ext_resource type="Texture2D" uid="uid://bx7sbsf0cvgdg" path="res://Assets/Guns/rocket.png" id="2_pj1mm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c27ax"]
+atlas = ExtResource("2_pj1mm")
+region = Rect2(0, 0, 134, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xulhp"]
+atlas = ExtResource("2_pj1mm")
+region = Rect2(0, 22, 134, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g45t2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c27ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xulhp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 25.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fl5yx"]
 size = Vector2(78.8171, 13.3974)
@@ -13,12 +35,15 @@ collision_layer = 8
 script = ExtResource("1_5cqps")
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(40, 0)
 stream = ExtResource("2_kiuhb")
+autoplay = true
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 0, 1)
-texture = ExtResource("2_pj1mm")
-vframes = 2
+sprite_frames = SubResource("SpriteFrames_g45t2")
+frame = 1
+frame_progress = 0.652363
 
 [node name="Col" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fl5yx")

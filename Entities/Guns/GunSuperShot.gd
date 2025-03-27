@@ -20,6 +20,7 @@ func _ready():
 	
 	auto_refire = true
 
+	ground_frame = 3
 #func set_flash_pos(): flash_pos = $Flash.position.x
 
 func eject():
@@ -68,6 +69,9 @@ func shoot():
 	if facing == 1: instance.position += Vector2(10*facing,10)#dumb fix
 	
 	get_parent().add_child(instance)
+	####
+	
+	if holder: holder.velocity -= Vector2(350*facing,150)
 ################################################################################################
 
 

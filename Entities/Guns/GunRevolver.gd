@@ -21,6 +21,8 @@ func _ready():
 	auto_reload = false
 	auto_refire = false
 	wait_shoot = true
+	
+	ground_frame = 3
 
 #func set_flash_pos(): flash_pos = $Flash.position.x
 
@@ -59,7 +61,10 @@ func shoot():
 	
 	
 	if holder:
+		holder.velocity -= Vector2(250*facing,50)
+		
 		instance.add_collision_exception_with(holder)
+	
 	instance.position = position + Vector2(10*(holder.facing if holder else facing), -10 * (-1 if ($Sprite.rotation_degrees >= 180) else 1))
 	get_parent().add_child(instance)
 
