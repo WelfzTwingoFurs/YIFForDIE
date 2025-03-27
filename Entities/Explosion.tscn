@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://bq1h4jjrntgle"]
+
+[ext_resource type="Texture2D" uid="uid://b2u3ctp7jx2se" path="res://Assets/Guns/explosion.png" id="1_jhqjb"]
+[ext_resource type="Script" path="res://Scripts/RandomAudioGeneric.gd" id="2_7s120"]
+[ext_resource type="Script" path="res://Entities/Explosion.gd" id="2_n7wia"]
+
+[sub_resource type="Animation" id="Animation_j3d0w"]
+resource_name = "boom"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.7, 1.2, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"col_disable"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o00tg"]
+_data = {
+"boom": SubResource("Animation_j3d0w")
+}
+
+[node name="Explosion" type="Polygon2D"]
+z_index = 1
+texture = ExtResource("1_jhqjb")
+polygon = PackedVector2Array(-100, -100, -50, -100, 0, -100, 50, -100, 100, -100, 100, -50, 100, 0, 100, 50, 100, 100, 50, 100, 0, 100, -50, 100, -100, 100, -100, 50, -100, 0, -100, -50)
+uv = PackedVector2Array(800, 0, 850, 0, 900, 0, 950, 0, 1000, 0, 1000, 50, 1000, 100, 1000, 150, 1000, 200, 950, 200, 900, 200, 850, 200, 800, 200, 800, 150, 800, 100, 800, 50)
+script = ExtResource("2_n7wia")
+resolution = Vector2(1400, 200)
+frame = 1
+verts = 5
+
+[node name="AniPlay" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sfx")
+libraries = {
+"": SubResource("AnimationLibrary_o00tg")
+}
+speed_scale = 3.0
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("2_7s120")
+audios = Array[String](["res://Assets/Guns/boom1.wav", "res://Assets/Guns/boom2.wav", "res://Assets/Guns/boom3.wav"])
+
+[node name="Node" type="Node2D" parent="."]
+
+[node name="RayCast" type="RayCast2D" parent="Node"]
+target_position = Vector2(0, 0)
+collision_mask = 255

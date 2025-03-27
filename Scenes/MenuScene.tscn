@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1pr8et0q07ka"]
+
+[ext_resource type="Script" path="res://Scripts/MenuScript.gd" id="1_ve8o2"]
+
+[node name="Scene" type="Node2D"]
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ve8o2")
+
+[node name="Main" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+offset_right = 104.0
+offset_bottom = 101.0
+
+[node name="start" type="Button" parent="Menu/Main"]
+layout_mode = 2
+text = "FIGHT! <1>"
+
+[node name="control" type="Button" parent="Menu/Main"]
+layout_mode = 2
+text = "Control Setup <1>"
+
+[node name="player" type="Button" parent="Menu/Main"]
+layout_mode = 2
+text = "Character Setup <1>"
+
+[connection signal="pressed" from="Menu/Main/start" to="Menu" method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Main/control" to="Menu" method="_on_control_pressed"]
+[connection signal="pressed" from="Menu/Main/player" to="Menu" method="_on_player_pressed"]

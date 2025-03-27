@@ -1,0 +1,111 @@
+[gd_scene load_steps=16 format=3 uid="uid://bgyppmn8pphmt"]
+
+[ext_resource type="Texture2D" uid="uid://ccrqym440cevc" path="res://Assets/ParticlesEffects/effect_dustjump.png" id="1_peee7"]
+[ext_resource type="Texture2D" uid="uid://b6kqqniqeqqpp" path="res://Assets/ParticlesEffects/effect_dustland.png" id="2_usak1"]
+[ext_resource type="Texture2D" uid="uid://c5jjj3ksm4jil" path="res://Assets/ParticlesEffects/effect_dustwalk.png" id="3_5336e"]
+[ext_resource type="Script" path="res://Entities/ParticlesEffects/Effect_Dust.gd" id="4_nflan"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6gdj"]
+atlas = ExtResource("1_peee7")
+region = Rect2(0, 0, 89, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vti37"]
+atlas = ExtResource("1_peee7")
+region = Rect2(89, 0, 89, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pv6l"]
+atlas = ExtResource("1_peee7")
+region = Rect2(178, 0, 89, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni24q"]
+atlas = ExtResource("1_peee7")
+region = Rect2(267, 0, 89, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1yhb"]
+atlas = ExtResource("2_usak1")
+region = Rect2(0, 0, 164, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv4he"]
+atlas = ExtResource("2_usak1")
+region = Rect2(164, 0, 164, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63hba"]
+atlas = ExtResource("2_usak1")
+region = Rect2(328, 0, 164, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w4qy"]
+atlas = ExtResource("3_5336e")
+region = Rect2(0, 0, 41, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tixep"]
+atlas = ExtResource("3_5336e")
+region = Rect2(41, 0, 41, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfgp0"]
+atlas = ExtResource("3_5336e")
+region = Rect2(82, 0, 41, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bb3gn"]
+animations = [{
+"frames": [{
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_h6gdj")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_vti37")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_5pv6l")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_ni24q")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1yhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv4he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63hba")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"land",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2w4qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tixep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfgp0")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="dust" type="AnimatedSprite2D"]
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_bb3gn")
+animation = &"walk"
+frame = 3
+frame_progress = 1.0
+script = ExtResource("4_nflan")
