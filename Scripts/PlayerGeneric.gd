@@ -43,29 +43,29 @@ func _process(_delta): #########################################################
 		set_state(STATES.WAIT)
 	
 	
-	$Sprite.material.set_shader_parameter("player", player)
-	$Sprite.frame = (frame + (spr_step*int(speak)))
-	$Sprite.scale.x = facing * spr_scale.x
+	$CGS.material.set_shader_parameter("player", player)
+	$CGS/Sprite.frame = (frame + (spr_step*int(speak)))
+	$CGS/Sprite.scale.x = facing * spr_scale.x
 	
-	$Arm.frame = frame
-	$Arm.scale.x = facing * spr_scale.x
+	$CGS/Arm.frame = frame
+	$CGS/Arm.scale.x = facing * spr_scale.x
 	
 	speak = $Voice.playing if ($AniPlay.current_animation == "ani_melee") else (true if ($Voice.playing && (Time.get_ticks_msec()/100 % 3)) else false)
 	
 	
 	
 	if Engine.is_editor_hint():
-		$Finger.frame = frame + spr_step
-		$Finger.scale.x = facing *spr_scale.x
+		$CGS/Finger.frame = frame + spr_step
+		$CGS/Finger.scale.x = facing *spr_scale.x
 	else:
 		match holding:
 			false:
-				$Finger.visible = false
+				$CGS/Finger.visible = false
 			
 			_:
-				$Finger.visible = true
-				$Finger.frame = frame + spr_step
-				$Finger.scale.x = facing *spr_scale.x
+				$CGS/Finger.visible = true
+				$CGS/Finger.frame = frame + spr_step
+				$CGS/Finger.scale.x = facing *spr_scale.x
 	
 	
 	
@@ -90,23 +90,23 @@ func _process(_delta): #########################################################
 func set_handed(string):
 	match string:
 		1:
-			$Arm.texture = handed_one
-			$Finger.texture = handed_one
+			$CGS/Arm.texture = handed_one
+			$CGS/Finger.texture = handed_one
 		2:
-			$Arm.texture = handed_reload
-			$Finger.texture = handed_reload
+			$CGS/Arm.texture = handed_reload
+			$CGS/Finger.texture = handed_reload
 		3:
-			$Arm.texture = handed_hip
-			$Finger.texture = handed_hip
+			$CGS/Arm.texture = handed_hip
+			$CGS/Finger.texture = handed_hip
 		4:
-			$Arm.texture = handed_hip_pump
-			$Finger.texture = handed_hip_pump
+			$CGS/Arm.texture = handed_hip_pump
+			$CGS/Finger.texture = handed_hip_pump
 		5:
-			$Arm.texture = handed_highaim
-			$Finger.texture = handed_highaim
+			$CGS/Arm.texture = handed_highaim
+			$CGS/Finger.texture = handed_highaim
 		_:
-			$Arm.texture = handed_empty
-			$Finger.texture = handed_empty
+			$CGS/Arm.texture = handed_empty
+			$CGS/Finger.texture = handed_empty
 
 
 
@@ -117,50 +117,50 @@ func set_handed(string):
 
 func tail_logic():
 	if pos_tail.size() != 0:
-		$Tail.position = pos_tail[frame]*Vector2(facing,1)
-		$Tail.scale.x = facing
+		$CGS/Tail.position = pos_tail[frame]*Vector2(facing,1)
+		$CGS/Tail.scale.x = facing
 		if is_on_floor():
-			if abs(velocity.x) < 10 && ($Tail.animation == "flop1" or $Tail.animation == "flop2"): $Tail.play("wag2")
+			if abs(velocity.x) < 10 && ($CGS/Tail.animation == "flop1" or $CGS/Tail.animation == "flop2"): $CGS/Tail.play("wag2")
 			
 			
 			if !hardtail:################################################## TAIL SPIN, IDLE, RUN ###
 				if (abs(velocity.x) > max_speed/1.2):
-					$Tail.speed_scale = 0.7 + (abs(velocity.x)+abs(velocity.y))/(max_speed/1.1)
-					$Tail.play("flop1" if (Time.get_ticks_msec()/125 % 5) else "flop2")
+					$CGS/Tail.speed_scale = 0.7 + (abs(velocity.x)+abs(velocity.y))/(max_speed/1.1)
+					$CGS/Tail.play("flop1" if (Time.get_ticks_msec()/125 % 5) else "flop2")
 				
-				elif ($Tail.animation != "spin1") && ($Tail.animation != "spin2"):
+				elif ($CGS/Tail.animation != "spin1") && ($CGS/Tail.animation != "spin2"):
 					if !(randi() % 256):#start
-						$Tail.speed_scale = 1
-						$Tail.play("spin1" if ($Tail.animation == "wag1") else "spin2")
+						$CGS/Tail.speed_scale = 1
+						$CGS/Tail.play("spin1" if ($CGS/Tail.animation == "wag1") else "spin2")
 				
-				elif $Tail.frame == 6:#end
-					match $Tail.animation:
-						"spin1": $Tail.play("wag2")
-						"spin2": $Tail.play("wag1")
+				elif $CGS/Tail.frame == 6:#end
+					match $CGS/Tail.animation:
+						"spin1": $CGS/Tail.play("wag2")
+						"spin2": $CGS/Tail.play("wag1")
 				
-				#elif (abs(velocity.x) < 100) && ($Tail.animation == null) or ($Tail.animation == "flop2"):
-				#	$Tail.play("wag1")
+				#elif (abs(velocity.x) < 100) && ($CGS/Tail.animation == null) or ($CGS/Tail.animation == "flop2"):
+				#	$CGS/Tail.play("wag1")
 				
 				
 			else:#if hardtail:
-				if (abs(velocity.x) < max_speed/1.2): $Tail.speed_scale = 1
-				else: $Tail.speed_scale = 0.7 + (abs(velocity.x)+abs(velocity.y))/(max_speed/1.1)
-				$Tail.play(("flop1" if (Time.get_ticks_msec()/125 % 5) else "flop2") if (abs(velocity.x) > max_speed/1.2) else "wag2")
+				if (abs(velocity.x) < max_speed/1.2): $CGS/Tail.speed_scale = 1
+				else: $CGS/Tail.speed_scale = 0.7 + (abs(velocity.x)+abs(velocity.y))/(max_speed/1.1)
+				$CGS/Tail.play(("flop1" if (Time.get_ticks_msec()/125 % 5) else "flop2") if (abs(velocity.x) > max_speed/1.2) else "wag2")
 		
 		
 		
 		else:#!is_on_floor:
-			$Tail.speed_scale = 2+ ((abs(velocity.x)+abs(velocity.y)) / (max_speed/1.1))
+			$CGS/Tail.speed_scale = 2+ ((abs(velocity.x)+abs(velocity.y)) / (max_speed/1.1))
 			
 			if abs(velocity.x/2) > abs(velocity.y):
-				$Tail.play("flop2" if (sign(velocity.y)+1) else "flop1")
+				$CGS/Tail.play("flop2" if (sign(velocity.y)+1) else "flop1")
 			
 			elif !hardtail && (abs(velocity.y) > max_speed*3):
-				$Tail.frame = randi () % 3
-				$Tail.play("wag2" if !(Time.get_ticks_msec()/125 % int($Tail.speed_scale/2)) else "wag1")
+				$CGS/Tail.frame = randi () % 3
+				$CGS/Tail.play("wag2" if !(Time.get_ticks_msec()/125 % int($CGS/Tail.speed_scale/2)) else "wag1")
 			
 			else:
-				$Tail.play("wag1" if (sign(velocity.y)+1) else "wag2")
+				$CGS/Tail.play("wag1" if (sign(velocity.y)+1) else "wag2")
 			
 			
 #################################################################################### SPRITE WORK ###
@@ -249,17 +249,17 @@ func reconfigure():
 	
 	$Pow/Col.disabled = true
 	
-	$Tail.z_index = 0
-	$Sprite.z_index = 0
-	$Arm.z_index = 0
-	$Finger.z_index = 1
+	$CGS/Tail.z_index = 0
+	$CGS/Sprite.z_index = 0
+	$CGS/Arm.z_index = 0
+	$CGS/Finger.z_index = 1
 	
 	anibusy = 0
 	$AniPlay.stop()
 	$AniPlay.play("idle" if !idle_anim else "ani_idle")
 	
-	$Tail.rotation_degrees = 0
-	$Tail.rotation = 0
+	$CGS/Tail.rotation_degrees = 0
+	$CGS/Tail.rotation = 0
 	set_state(STATES.IDLE)
 
 
@@ -286,10 +286,10 @@ func die():
 
 
 func tail_spin():
-	$Tail.rotation = 45*facing
+	$CGS/Tail.rotation = 45*facing
 
 func tail_top():
-	$Tail.z_index = 1
+	$CGS/Tail.z_index = 1
 
 
 func respawn():
@@ -461,7 +461,7 @@ func state_idle():
 	collision_regular()
 	
 	match is_on_floor():
-		false:#!is_on_floor() NOT ON FLOON, AT AIR##################################################
+		false:#!is_on_floor() NOT ON FLOOR, AT AIR##################################################
 			if ($AniPlay.current_animation == "ani_jump") or ($AniPlay.current_animation == "ani_rejump"):
 				$Sfx.jump()
 				jump()#When the jump animation doesn't jump on time, be cool and let the player still jump
@@ -544,18 +544,13 @@ func state_idle():
 			
 			
 			if anibusy < 2:
-				#if $AniPlay.current_animation == "idle": anibusy = 0
-				
 				if Input.is_action_just_pressed("jump"+str(player)):
 					$AniPlay.speed_scale = animation_speed
 					$AniPlay.play("ani_jump")
 					anibusy = 2#Jumping animation
 				
 				#Ground control
-				#if input && ($AniPlay.current_animation != "ani_turn") && ($AniPlay.current_animation != "ani_jump") && ($AniPlay.current_animation != "ani_rejump") && ($AniPlay.current_animation != "ani_land"):
-				#if input && ((($AniPlay.current_animation != "ani_jump") && ($AniPlay.current_animation != "ani_turn") && ($AniPlay.current_animation != "ani_rejump") && ($AniPlay.current_animation != "ani_land")) if (animation_speed < 1.5) else (1 == 1)):
-				#if input && ((($AniPlay.current_animation != "ani_jump") && ($AniPlay.current_animation != "ani_rejump") && ($AniPlay.current_animation != "ani_land")) if (animation_speed < 1.5) else (1 == 1)) && ($AniPlay.current_animation != "ani_turn"):
-				if input && ($AniPlay.current_animation != "ani_turn") && ((($AniPlay.current_animation != "ani_jump") && ($AniPlay.current_animation != "ani_rejump") && ($AniPlay.current_animation != "ani_land")) if (animation_speed < 1.5) else (1 == 1)):
+				if input.x && ($AniPlay.current_animation != "ani_turn") && ((($AniPlay.current_animation != "ani_jump") && ($AniPlay.current_animation != "ani_rejump") && ($AniPlay.current_animation != "ani_land")) if (animation_speed < 1.5) else (1 == 1)):
 					velocity.x = lerp(velocity.x, input.x*max_speed, (ground_accel if (input.x == facing) else ground_antiaccel))
 				else:
 					velocity.x = lerp(velocity.x, 0.0, ground_deaccel)

@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export var item = load("res://Entities/Guns/GunAutoPistol.tscn")
+@export var item = load("res://Entities/Guns/Gun_AutoPistol.tscn")
 @export var timer = 500.0
 @export var wait = false
 @export var ammo_in = -1

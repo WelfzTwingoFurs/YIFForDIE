@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://Levels/LevelScript.gd" id="1_pjkek"]
 [ext_resource type="PackedScene" uid="uid://b6amf2ybssyrp" path="res://Assets/tileauto_grass.tscn" id="2_lgnwo"]
-[ext_resource type="Texture2D" uid="uid://pcm3cm4p8fvs" path="res://Assets/Guns/gunpistol.png" id="3_m5p3d"]
+[ext_resource type="Texture2D" uid="uid://pcm3cm4p8fvs" path="res://Assets/Guns/gun_pistol.png" id="3_m5p3d"]
 [ext_resource type="Script" path="res://Scripts/GunSpawner.gd" id="3_o0ny5"]
-[ext_resource type="PackedScene" uid="uid://y83qdv83ah7f" path="res://Entities/Guns/GunAutoPistol.tscn" id="5_1p0wh"]
-[ext_resource type="Texture2D" uid="uid://dypor01ctulc1" path="res://Assets/Guns/gunrocketlaunch.png" id="6_awr8s"]
-[ext_resource type="PackedScene" uid="uid://cp1ebq62a8oo3" path="res://Entities/Guns/GunRocketLaunch.tscn" id="7_npsjw"]
-[ext_resource type="Texture2D" uid="uid://byftw3f6cwsum" path="res://Assets/Guns/gunsupershot.png" id="8_btxgi"]
-[ext_resource type="PackedScene" uid="uid://dc66pit2etxwd" path="res://Entities/Guns/GunSuperShot.tscn" id="9_258td"]
+[ext_resource type="PackedScene" uid="uid://y83qdv83ah7f" path="res://Entities/Guns/Gun_AutoPistol.tscn" id="5_1p0wh"]
+[ext_resource type="Texture2D" uid="uid://dypor01ctulc1" path="res://Assets/Guns/gun_rocketlaunch.png" id="6_awr8s"]
+[ext_resource type="PackedScene" uid="uid://cp1ebq62a8oo3" path="res://Entities/Guns/Gun_RocketLaunch.tscn" id="7_npsjw"]
+[ext_resource type="Texture2D" uid="uid://byftw3f6cwsum" path="res://Assets/Guns/gun_supershot.png" id="8_btxgi"]
+[ext_resource type="PackedScene" uid="uid://dc66pit2etxwd" path="res://Entities/Guns/Gun_SuperShot.tscn" id="9_258td"]
 
 [node name="sceneTWO" type="Node2D"]
 script = ExtResource("1_pjkek")

@@ -1,21 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://b4f0x6mepd7rj"]
+[gd_scene load_steps=18 format=3 uid="uid://b4f0x6mepd7rj"]
 
 [ext_resource type="Script" path="res://Levels/LevelScript.gd" id="1_c54gj"]
 [ext_resource type="PackedScene" uid="uid://b6amf2ybssyrp" path="res://Assets/tileauto_grass.tscn" id="2_a8huf"]
-[ext_resource type="Texture2D" uid="uid://pcm3cm4p8fvs" path="res://Assets/Guns/gunpistol.png" id="3_b8r78"]
+[ext_resource type="Texture2D" uid="uid://pcm3cm4p8fvs" path="res://Assets/Guns/gun_pistol.png" id="3_b8r78"]
 [ext_resource type="Script" path="res://Scripts/GunSpawner.gd" id="4_eahrg"]
-[ext_resource type="PackedScene" uid="uid://y83qdv83ah7f" path="res://Entities/Guns/GunAutoPistol.tscn" id="5_xjfh6"]
-[ext_resource type="Texture2D" uid="uid://dndkjh46yik3i" path="res://Assets/Guns/gunsniper.png" id="6_0tb58"]
-[ext_resource type="PackedScene" uid="uid://dw6gg173dqvsr" path="res://Entities/Guns/GunSniper.tscn" id="7_r3ncn"]
-[ext_resource type="Texture2D" uid="uid://byftw3f6cwsum" path="res://Assets/Guns/gunsupershot.png" id="8_fiqei"]
-[ext_resource type="PackedScene" uid="uid://dc66pit2etxwd" path="res://Entities/Guns/GunSuperShot.tscn" id="9_b6283"]
-[ext_resource type="Texture2D" uid="uid://dypor01ctulc1" path="res://Assets/Guns/gunrocketlaunch.png" id="10_6nss4"]
-[ext_resource type="PackedScene" uid="uid://cp1ebq62a8oo3" path="res://Entities/Guns/GunRocketLaunch.tscn" id="11_otl3o"]
-[ext_resource type="Texture2D" uid="uid://7xamq8jt3ci2" path="res://Assets/Guns/gunrevolver.png" id="12_uge3f"]
-[ext_resource type="PackedScene" uid="uid://b4ethhcu0cjoq" path="res://Entities/Guns/GunRevolver.tscn" id="13_24fwg"]
+[ext_resource type="PackedScene" uid="uid://y83qdv83ah7f" path="res://Entities/Guns/Gun_AutoPistol.tscn" id="5_xjfh6"]
+[ext_resource type="Texture2D" uid="uid://dndkjh46yik3i" path="res://Assets/Guns/gun_sniper.png" id="6_0tb58"]
+[ext_resource type="PackedScene" uid="uid://dw6gg173dqvsr" path="res://Entities/Guns/Gun_Sniper.tscn" id="7_r3ncn"]
+[ext_resource type="Texture2D" uid="uid://byftw3f6cwsum" path="res://Assets/Guns/gun_supershot.png" id="8_fiqei"]
+[ext_resource type="PackedScene" uid="uid://dc66pit2etxwd" path="res://Entities/Guns/Gun_SuperShot.tscn" id="9_b6283"]
+[ext_resource type="Texture2D" uid="uid://dypor01ctulc1" path="res://Assets/Guns/gun_rocketlaunch.png" id="10_6nss4"]
+[ext_resource type="PackedScene" uid="uid://cp1ebq62a8oo3" path="res://Entities/Guns/Gun_RocketLaunch.tscn" id="11_otl3o"]
+[ext_resource type="Texture2D" uid="uid://7xamq8jt3ci2" path="res://Assets/Guns/gun_revolver.png" id="12_uge3f"]
+[ext_resource type="PackedScene" uid="uid://b4ethhcu0cjoq" path="res://Entities/Guns/Gun_Revolver.tscn" id="13_24fwg"]
 [ext_resource type="PackedScene" uid="uid://bq1h4jjrntgle" path="res://Entities/Explosion.tscn" id="14_bd86b"]
-[ext_resource type="Texture2D" uid="uid://bmwgeh3pscxfq" path="res://Assets/Guns/gunbfg.png" id="14_vulr5"]
-[ext_resource type="PackedScene" uid="uid://cvpmj3lol5d3g" path="res://Entities/Guns/GunBFG.tscn" id="15_n3jyn"]
+[ext_resource type="Texture2D" uid="uid://bmwgeh3pscxfq" path="res://Assets/Guns/gun_bfg.png" id="14_vulr5"]
+[ext_resource type="PackedScene" uid="uid://cvpmj3lol5d3g" path="res://Entities/Guns/Gun_BFG.tscn" id="15_n3jyn"]
+[ext_resource type="Texture2D" uid="uid://d12qotbb7fduj" path="res://Assets/PlayerStud/stud_body.png" id="17_sciph"]
 
 [node name="sceneTWO" type="Node2D"]
 script = ExtResource("1_c54gj")
@@ -91,3 +92,9 @@ ammo_out = 9999
 position = Vector2(933.845, -192.293)
 polygon = PackedVector2Array(-100, -100, -33.3333, -100, 33.3333, -100, 100, -100, 100, -33.3333, 100, 33.3333, 100, 100, 33.3333, 100, -33.3333, 100, -100, 100, -100, 33.3333, -100, -33.3333)
 uv = PackedVector2Array(800, 0, 866.667, 0, 933.333, 0, 1000, 0, 1000, 66.6667, 1000, 133.333, 1000, 200, 933.333, 200, 866.667, 200, 800, 200, 800, 133.333, 800, 66.6667)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(581.426, 50.9692)
+texture = ExtResource("17_sciph")
+hframes = 10
+vframes = 8

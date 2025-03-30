@@ -787,11 +787,11 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6eqn"]
 resource_local_to_scene = true
 shader = ExtResource("9_kr1gc")
-shader_parameter/player1 = PackedColorArray(0.498039, 0.498039, 0.498039, 1, 1, 1, 1, 1, 1, 0.937255, 0.501961, 1, 1, 0.501961, 0, 1)
+shader_parameter/player = 1
+shader_parameter/player1 = PackedColorArray(0.498039, 0.498039, 0.498039, 1, 1, 1, 1, 1, 1, 0.937255, 0.501961, 1, 1, 0.501961, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1)
 shader_parameter/player2 = PackedColorArray(0.968627, 0.945098, 0.541176, 1, 0.603922, 0.207843, 0.207843, 1, 0.207843, 0.207843, 0.207843, 1, 1, 1, 1, 1)
 shader_parameter/player3 = PackedColorArray(1, 1, 1, 1, 0.968627, 0.945098, 0.541176, 1, 0.968627, 0.945098, 1, 1, 1, 0, 0, 1)
 shader_parameter/player4 = PackedColorArray(1, 0, 1, 1, 0.207843, 0.207843, 1, 1, 0.207843, 0.207843, 0.403922, 1, 0.968627, 0.945098, 0.541176, 1)
-shader_parameter/player = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwofg"]
 size = Vector2(38, 126)
@@ -804,10 +804,10 @@ collision_layer = 2
 script = ExtResource("1_4nhak")
 character_name = "Gaben Freeware"
 frame = 18
-pos_highaim = [Vector2(40, -118), Vector2(41, -105), Vector2(26, -104), Vector2(40, -105), Vector2(34, -107), Vector2(28, -89), Vector2(43, -110), Vector2(45, -104), Vector2(24, -108), Vector2(0, 0), Vector2(40, -118), Vector2(53, -62), Vector2(59, -67), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(36, -118)]
-pos_hip = [Vector2(9, -91), Vector2(26, -81), Vector2(8, -82), Vector2(26, -81), Vector2(20, -81), Vector2(13, -67), Vector2(11, -85), Vector2(16, -79), Vector2(9, -83), Vector2(0, 0), Vector2(9, -91), Vector2(28, -36), Vector2(32, -40), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(18, -90)]
-pos_reload = [Vector2(33, -97), Vector2(51, -84), Vector2(38, -85), Vector2(51, -84), Vector2(49, -88), Vector2(41, -70), Vector2(40, -89), Vector2(44, -87), Vector2(33, -88), Vector2(0, 0), Vector2(41, -99), Vector2(53, -44), Vector2(57, -46), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(33, -100)]
-pos_onehanded = [Vector2(76, -115), Vector2(76, -98), Vector2(75, -101), Vector2(71, -99), Vector2(69, -107), Vector2(73, -88), Vector2(77, -107), Vector2(70, -89), Vector2(65, -100), Vector2(0, 0), Vector2(76, -115), Vector2(77, -56), Vector2(71, -58), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(63, -91)]
+pos_highaim = [Vector2(40, -118), Vector2(41, -105), Vector2(26, -104), Vector2(40, -105), Vector2(34, -107), Vector2(28, -89), Vector2(43, -110), Vector2(45, -104), Vector2(24, -108), Vector2(0, 0), Vector2(40, -118), Vector2(53, -62), Vector2(59, -67), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(22, -88), Vector2(22, -78), Vector2(0, 0), Vector2(36, -118)]
+pos_hip = [Vector2(9, -91), Vector2(26, -81), Vector2(8, -82), Vector2(26, -81), Vector2(20, -81), Vector2(13, -67), Vector2(11, -85), Vector2(16, -79), Vector2(9, -83), Vector2(0, 0), Vector2(9, -91), Vector2(28, -36), Vector2(32, -40), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(15, -87), Vector2(18, -78), Vector2(0, 0), Vector2(18, -90)]
+pos_reload = [Vector2(33, -97), Vector2(51, -84), Vector2(38, -85), Vector2(51, -84), Vector2(49, -88), Vector2(41, -70), Vector2(40, -89), Vector2(44, -87), Vector2(33, -88), Vector2(0, 0), Vector2(41, -99), Vector2(53, -44), Vector2(57, -46), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(40, -90), Vector2(30, -81), Vector2(0, 0), Vector2(33, -100)]
+pos_onehanded = [Vector2(76, -115), Vector2(76, -98), Vector2(75, -101), Vector2(71, -99), Vector2(69, -107), Vector2(73, -88), Vector2(77, -107), Vector2(70, -89), Vector2(65, -100), Vector2(0, 0), Vector2(76, -115), Vector2(77, -56), Vector2(71, -58), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(44, -85), Vector2(42, -84), Vector2(0, 0), Vector2(63, -91)]
 pos_tail = [Vector2(0, -65), Vector2(-3, -63), Vector2(0, -63), Vector2(-3, -63), Vector2(-6, -64), Vector2(-3, -52), Vector2(-5, -71), Vector2(-13, -79), Vector2(-15, -63), Vector2(0, 0), Vector2(0, -65), Vector2(-23, -45), Vector2(-15, -52), Vector2(0, -65), Vector2(0, -65), Vector2(0, -65), Vector2(-5, -67), Vector2(8, -62), Vector2(-5, -25), Vector2(0, -65), null, null, null, null, null, null, null, null, Vector2(10, -48), Vector2(-5, -63)]
 hardtail = true
 handed_empty = ExtResource("11_i4xun")

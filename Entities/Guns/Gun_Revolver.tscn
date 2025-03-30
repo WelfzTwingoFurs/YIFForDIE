@@ -1,0 +1,246 @@
+[gd_scene load_steps=14 format=3 uid="uid://b4ethhcu0cjoq"]
+
+[ext_resource type="Script" path="res://Entities/Guns/Gun_Revolver.gd" id="1_yu0qf"]
+[ext_resource type="Texture2D" uid="uid://bvt6tv0e7y26g" path="res://Assets/ParticlesEffects/gun_muzzleflash.png" id="2_84cln"]
+[ext_resource type="Texture2D" uid="uid://7xamq8jt3ci2" path="res://Assets/Guns/gun_revolver.png" id="3_bkroe"]
+[ext_resource type="Script" path="res://Scripts/GunAudioGeneric.gd" id="4_a6u8b"]
+[ext_resource type="AudioStream" uid="uid://bliu2oj5t8lpy" path="res://Assets/Audio/gun_revolver_shoot.wav" id="5_67ltl"]
+[ext_resource type="AudioStream" uid="uid://bkix6yfn4bo22" path="res://Assets/Audio/gun_revolver_empty.wav" id="6_q808s"]
+[ext_resource type="AudioStream" uid="uid://b77swebn6xb5m" path="res://Assets/Audio/gun_revolver_reload.wav" id="7_uf8nf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vqo73"]
+radius = 12.8258
+
+[sub_resource type="Animation" id="Animation_q1pje"]
+resource_name = "empty"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sfx")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"empty"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Flash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_sef0n"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Flash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mcgb2"]
+resource_name = "reload"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1, 4, 4.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.4, 2.7, 4.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"release"
+}, {
+"args": [],
+"method": &"reload"
+}, {
+"args": [false],
+"method": &"set_busy"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4, 3.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [1],
+"method": &"set_handstate"
+}, {
+"args": [2],
+"method": &"set_handstate"
+}, {
+"args": [],
+"method": &"eject_case"
+}, {
+"args": [1],
+"method": &"set_handstate"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vtnqj"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Flash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dgb6m"]
+_data = {
+"empty": SubResource("Animation_q1pje"),
+"idle": SubResource("Animation_sef0n"),
+"reload": SubResource("Animation_mcgb2"),
+"shoot": SubResource("Animation_vtnqj")
+}
+
+[node name="GunRevolver" type="CharacterBody2D" groups=["grab"]]
+scale = Vector2(1.05, 1.05)
+collision_layer = 4
+script = ExtResource("1_yu0qf")
+
+[node name="Col" type="CollisionShape2D" parent="."]
+scale = Vector2(1.87, 1)
+shape = SubResource("CircleShape2D_vqo73")
+
+[node name="AniPlay" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dgb6m")
+}
+speed_scale = 3.0
+
+[node name="Flash" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+position = Vector2(66.7691, -9.44627)
+texture = ExtResource("2_84cln")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_bkroe")
+vframes = 4
+frame = 1
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("4_a6u8b")
+shoot_sfx = ExtResource("5_67ltl")
+empty_sfx = ExtResource("6_q808s")
+release_sfx = ExtResource("7_uf8nf")
+reload_sfx = ExtResource("6_q808s")
+charge_sfx = ExtResource("5_67ltl")
+
+[node name="TooClose" type="Area2D" parent="."]
+scale = Vector2(3, 2)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Col" type="CollisionShape2D" parent="TooClose"]
+shape = SubResource("CircleShape2D_vqo73")
+
+[connection signal="body_entered" from="TooClose" to="." method="_on_too_close_body_entered"]
+[connection signal="body_exited" from="TooClose" to="." method="_on_too_close_body_exited"]

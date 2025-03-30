@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dqykvsh5x1kvr" path="res://Entities/PlayerGaben/playerGaben.tscn" id="1_b6550"]
 [ext_resource type="Texture2D" uid="uid://b178hsxy70njv" path="res://Assets/PlayerGaben/gaben_reload.png" id="2_g0200"]
 [ext_resource type="PackedScene" uid="uid://bicp7j4vwd53l" path="res://Assets/tile_map.tscn" id="4_il3nk"]
-[ext_resource type="PackedScene" uid="uid://y83qdv83ah7f" path="res://Entities/Guns/GunAutoPistol.tscn" id="5_akgfl"]
-[ext_resource type="PackedScene" uid="uid://dw6gg173dqvsr" path="res://Entities/Guns/GunSniper.tscn" id="6_7wpbp"]
-[ext_resource type="PackedScene" uid="uid://dc66pit2etxwd" path="res://Entities/Guns/GunSuperShot.tscn" id="7_jsagd"]
+[ext_resource type="PackedScene" uid="uid://y83qdv83ah7f" path="res://Entities/Guns/Gun_AutoPistol.tscn" id="5_akgfl"]
+[ext_resource type="PackedScene" uid="uid://dw6gg173dqvsr" path="res://Entities/Guns/Gun_Sniper.tscn" id="6_7wpbp"]
+[ext_resource type="PackedScene" uid="uid://dc66pit2etxwd" path="res://Entities/Guns/Gun_SuperShot.tscn" id="7_jsagd"]
 
 [node name="sceneTWO" type="Node2D"]
 
