@@ -21,6 +21,7 @@ var facing
 
 var ground_frame = 0
 var ground_frame2 = -1
+var weight_divi = 1
 
 #func _ready():
 #	$AniPlay.stop()

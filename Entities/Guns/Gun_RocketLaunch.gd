@@ -24,6 +24,7 @@ func _ready():
 	
 	ground_frame = 2
 	ground_frame2 = 3
+	weight_divi = 1.1
 @onready var flash_pos2 = $Flash2.position.x
 
 
@@ -49,7 +50,7 @@ func shoot():
 	#instance.gravity = 20.0
 	
 	if holder:
-		holder.velocity = Vector2(-1000*facing,-500)
+		holder.velocity = Vector2(-1000*holder.facing,-500)
 		
 		instance.add_collision_exception_with(holder)
 	instance.add_collision_exception_with(self)

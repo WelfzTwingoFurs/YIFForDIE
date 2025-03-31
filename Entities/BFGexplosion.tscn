@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq1h4jjrntgle"]
+[gd_scene load_steps=6 format=3 uid="uid://bdnod4u3kldbd"]
 
-[ext_resource type="Texture2D" uid="uid://b2u3ctp7jx2se" path="res://Assets/Guns/explosion.png" id="1_jhqjb"]
-[ext_resource type="Script" path="res://Scripts/RandomAudioGeneric.gd" id="2_7s120"]
-[ext_resource type="Script" path="res://Entities/Explosion.gd" id="2_n7wia"]
+[ext_resource type="Texture2D" uid="uid://dis7i7y54i44c" path="res://Assets/Guns/bfgball.png" id="1_hbeuq"]
+[ext_resource type="Script" path="res://Entities/Explosion.gd" id="2_py2p6"]
+[ext_resource type="Script" path="res://Scripts/RandomAudioGeneric.gd" id="3_dh4so"]
 
 [sub_resource type="Animation" id="Animation_j3d0w"]
 resource_name = "boom"
@@ -41,12 +41,13 @@ _data = {
 
 [node name="Explosion" type="Polygon2D"]
 z_index = 1
-texture = ExtResource("1_jhqjb")
-polygon = PackedVector2Array(-150, -150, -75, -150, 0, -150, 75, -150, 150, -150, 150, -75, 150, 0, 150, 75, 150, 150, 75, 150, 0, 150, -75, 150, -150, 150, -150, 75, -150, 0, -150, -75)
-uv = PackedVector2Array(800, 0, 850, 0, 900, 0, 950, 0, 1000, 0, 1000, 50, 1000, 100, 1000, 150, 1000, 200, 950, 200, 900, 200, 850, 200, 800, 200, 800, 150, 800, 100, 800, 50)
-script = ExtResource("2_n7wia")
-resolution = Vector2(1400, 200)
-frame = 4
+texture = ExtResource("1_hbeuq")
+polygon = PackedVector2Array(-171, -135, -85.5, -135, 0, -135, 85.5, -135, 171, -135, 171, -67.5, 171, 0, 171, 67.5, 171, 135, 85.5, 135, 0, 135, -85.5, 135, -171, 135, -171, 67.5, -171, 0, -171, -67.5)
+uv = PackedVector2Array(0, 0, 57, 0, 114, 0, 171, 0, 228, 0, 228, 45, 228, 90, 228, 135, 228, 180, 171, 180, 114, 180, 57, 180, 0, 180, 0, 135, 0, 90, 0, 45)
+script = ExtResource("2_py2p6")
+resolution = Vector2(228, 1080)
+framesHV = Vector2(1, 6)
+frame = 0
 verts = 5
 
 [node name="AniPlay" type="AnimationPlayer" parent="."]
@@ -57,7 +58,7 @@ libraries = {
 speed_scale = 3.0
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
-script = ExtResource("2_7s120")
+script = ExtResource("3_dh4so")
 audios = Array[String](["res://Assets/Audio/boom1.wav", "res://Assets/Audio/boom2.wav", "res://Assets/Audio/boom3.wav"])
 
 [node name="Node" type="Node2D" parent="."]

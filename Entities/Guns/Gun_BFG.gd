@@ -20,6 +20,7 @@ func _ready():
 	wait_shoot = true
 	
 	ground_frame = 2
+	weight_divi = 1.5
 
 
 
@@ -34,7 +35,7 @@ func shoot():
 	
 	
 	if holder:
-		holder.velocity = Vector2(-1000*facing,-500)
+		holder.velocity = Vector2(-1000*holder.facing,-500)
 		
 		instance.add_collision_exception_with(holder)
 	instance.add_collision_exception_with(self)

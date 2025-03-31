@@ -82,7 +82,7 @@ ammo_out = 9999
 modulate = Color(0, 0, 100, 1)
 position = Vector2(184.6, 79.341)
 texture = ExtResource("14_vulr5")
-vframes = 2
+vframes = 3
 script = ExtResource("4_eahrg")
 item = ExtResource("15_n3jyn")
 timer = 10.0
@@ -90,8 +90,8 @@ ammo_out = 9999
 
 [node name="Explosion" parent="." instance=ExtResource("14_bd86b")]
 position = Vector2(933.845, -192.293)
-polygon = PackedVector2Array(-100, -100, -33.3333, -100, 33.3333, -100, 100, -100, 100, -33.3333, 100, 33.3333, 100, 100, 33.3333, 100, -33.3333, 100, -100, 100, -100, 33.3333, -100, -33.3333)
-uv = PackedVector2Array(800, 0, 866.667, 0, 933.333, 0, 1000, 0, 1000, 66.6667, 1000, 133.333, 1000, 200, 933.333, 200, 866.667, 200, 800, 200, 800, 133.333, 800, 66.6667)
+uv = PackedVector2Array(1200, 0, 1250, 0, 1300, 0, 1350, 0, 1400, 0, 1400, 50, 1400, 100, 1400, 150, 1400, 200, 1350, 200, 1300, 200, 1250, 200, 1200, 200, 1200, 150, 1200, 100, 1200, 50)
+frame = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(581.426, 50.9692)

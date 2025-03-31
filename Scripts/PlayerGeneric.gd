@@ -398,7 +398,7 @@ func state_crouch():
 		collision_crouch()
 		
 		match bool(input.x):
-			true : velocity.x = lerp(velocity.x, input.x*(max_speed/2), (ground_accel if (input.x == facing) else ground_antiaccel)/2)
+			true : velocity.x = lerp(velocity.x, (input.x*(max_speed/2))   /(holding.weight_divi if holding else 1), ((ground_accel if (input.x == facing) else ground_antiaccel)/2)   /(holding.weight_divi if holding else 1))
 			false: velocity.x = lerp(velocity.x, 0.0, ground_deaccel*2)
 		
 		if input.x != facing: facing_input()
@@ -470,7 +470,7 @@ func state_idle():
 			#Gravity according to input
 			
 			if input: ############################################################## AIR CONTROL ###
-				velocity.x = lerp(velocity.x, input.x*(max_speed/(1+(1 if Input.is_action_pressed("movedown"+str(player)) else 0))), (air_accel if (input.x == facing) else air_antiaccel))
+				velocity.x = lerp(velocity.x, (input.x*(max_speed/(1+(1 if Input.is_action_pressed("movedown"+str(player)) else 0))))   /(holding.weight_divi if holding else 1), (air_accel if (input.x == facing) else air_antiaccel)   /(holding.weight_divi if holding else 1))
 			
 			else: velocity.x = lerp(velocity.x, 0.0, air_deaccel)
 			
@@ -551,7 +551,7 @@ func state_idle():
 				
 				#Ground control
 				if input.x && ($AniPlay.current_animation != "ani_turn") && ((($AniPlay.current_animation != "ani_jump") && ($AniPlay.current_animation != "ani_rejump") && ($AniPlay.current_animation != "ani_land")) if (animation_speed < 1.5) else (1 == 1)):
-					velocity.x = lerp(velocity.x, input.x*max_speed, (ground_accel if (input.x == facing) else ground_antiaccel))
+					velocity.x = lerp(velocity.x, (input.x*max_speed)   /(holding.weight_divi if holding else 1), (ground_accel if (input.x == facing) else ground_antiaccel)   /(holding.weight_divi if holding else 1))
 				else:
 					velocity.x = lerp(velocity.x, 0.0, ground_deaccel)
 			
