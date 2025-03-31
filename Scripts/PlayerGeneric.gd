@@ -42,30 +42,30 @@ func _process(_delta): #########################################################
 		HP = -150
 		set_state(STATES.WAIT)
 	
+	#print(player)
+	$Sprite.material.set_shader_parameter("player", player)
+	$Sprite.frame = (frame + (spr_step*int(speak)))
+	$Sprite.scale.x = facing * spr_scale.x
 	
-	$CGS.material.set_shader_parameter("player", player)
-	$CGS/Sprite.frame = (frame + (spr_step*int(speak)))
-	$CGS/Sprite.scale.x = facing * spr_scale.x
-	
-	$CGS/Arm.frame = frame
-	$CGS/Arm.scale.x = facing * spr_scale.x
+	$Sprite/Arm.frame = frame
+	#$Sprite/Arm.scale.x = facing * spr_scale.x
 	
 	speak = $Voice.playing if ($AniPlay.current_animation == "ani_melee") else (true if ($Voice.playing && (Time.get_ticks_msec()/100 % 3)) else false)
 	
 	
 	
 	if Engine.is_editor_hint():
-		$CGS/Finger.frame = frame + spr_step
-		$CGS/Finger.scale.x = facing *spr_scale.x
+		$Sprite/Finger.frame = frame + spr_step
+		#$Sprite/Finger.scale.x = facing *spr_scale.x
 	else:
 		match holding:
 			false:
-				$CGS/Finger.visible = false
+				$Sprite/Finger.visible = false
 			
 			_:
-				$CGS/Finger.visible = true
-				$CGS/Finger.frame = frame + spr_step
-				$CGS/Finger.scale.x = facing *spr_scale.x
+				$Sprite/Finger.visible = true
+				$Sprite/Finger.frame = frame + spr_step
+				$Sprite/Finger.scale.x = facing *spr_scale.x
 	
 	
 	
@@ -90,23 +90,23 @@ func _process(_delta): #########################################################
 func set_handed(string):
 	match string:
 		1:
-			$CGS/Arm.texture = handed_one
-			$CGS/Finger.texture = handed_one
+			$Sprite/Arm.texture = handed_one
+			$Sprite/Finger.texture = handed_one
 		2:
-			$CGS/Arm.texture = handed_reload
-			$CGS/Finger.texture = handed_reload
+			$Sprite/Arm.texture = handed_reload
+			$Sprite/Finger.texture = handed_reload
 		3:
-			$CGS/Arm.texture = handed_hip
-			$CGS/Finger.texture = handed_hip
+			$Sprite/Arm.texture = handed_hip
+			$Sprite/Finger.texture = handed_hip
 		4:
-			$CGS/Arm.texture = handed_hip_pump
-			$CGS/Finger.texture = handed_hip_pump
+			$Sprite/Arm.texture = handed_hip_pump
+			$Sprite/Finger.texture = handed_hip_pump
 		5:
-			$CGS/Arm.texture = handed_highaim
-			$CGS/Finger.texture = handed_highaim
+			$Sprite/Arm.texture = handed_highaim
+			$Sprite/Finger.texture = handed_highaim
 		_:
-			$CGS/Arm.texture = handed_empty
-			$CGS/Finger.texture = handed_empty
+			$Sprite/Arm.texture = handed_empty
+			$Sprite/Finger.texture = handed_empty
 
 
 
@@ -117,50 +117,50 @@ func set_handed(string):
 
 func tail_logic():
 	if pos_tail.size() != 0:
-		$CGS/Tail.position = pos_tail[frame]*Vector2(facing,1)
-		$CGS/Tail.scale.x = facing
+		$Sprite/Tail.position = pos_tail[frame]*Vector2(facing,1) - $Sprite.position#$Sprite/Tail.position = pos_tail[frame]*Vector2(facing,1)
+		#$Sprite/Tail.scale.x = facing
 		if is_on_floor():
-			if abs(velocity.x) < 10 && ($CGS/Tail.animation == "flop1" or $CGS/Tail.animation == "flop2"): $CGS/Tail.play("wag2")
+			if abs(velocity.x) < 10 && ($Sprite/Tail.animation == "flop1" or $Sprite/Tail.animation == "flop2"): $Sprite/Tail.play("wag2")
 			
 			
 			if !hardtail:################################################## TAIL SPIN, IDLE, RUN ###
 				if (abs(velocity.x) > max_speed/1.2):
-					$CGS/Tail.speed_scale = 0.7 + (abs(velocity.x)+abs(velocity.y))/(max_speed/1.1)
-					$CGS/Tail.play("flop1" if (Time.get_ticks_msec()/125 % 5) else "flop2")
+					$Sprite/Tail.speed_scale = 0.7 + (abs(velocity.x)+abs(velocity.y))/(max_speed/1.1)
+					$Sprite/Tail.play("flop1" if (Time.get_ticks_msec()/125 % 5) else "flop2")
 				
-				elif ($CGS/Tail.animation != "spin1") && ($CGS/Tail.animation != "spin2"):
+				elif ($Sprite/Tail.animation != "spin1") && ($Sprite/Tail.animation != "spin2"):
 					if !(randi() % 256):#start
-						$CGS/Tail.speed_scale = 1
-						$CGS/Tail.play("spin1" if ($CGS/Tail.animation == "wag1") else "spin2")
+						$Sprite/Tail.speed_scale = 1
+						$Sprite/Tail.play("spin1" if ($Sprite/Tail.animation == "wag1") else "spin2")
 				
-				elif $CGS/Tail.frame == 6:#end
-					match $CGS/Tail.animation:
-						"spin1": $CGS/Tail.play("wag2")
-						"spin2": $CGS/Tail.play("wag1")
+				elif $Sprite/Tail.frame == 6:#end
+					match $Sprite/Tail.animation:
+						"spin1": $Sprite/Tail.play("wag2")
+						"spin2": $Sprite/Tail.play("wag1")
 				
-				#elif (abs(velocity.x) < 100) && ($CGS/Tail.animation == null) or ($CGS/Tail.animation == "flop2"):
-				#	$CGS/Tail.play("wag1")
+				#elif (abs(velocity.x) < 100) && ($Sprite/Tail.animation == null) or ($Sprite/Tail.animation == "flop2"):
+				#	$Sprite/Tail.play("wag1")
 				
 				
 			else:#if hardtail:
-				if (abs(velocity.x) < max_speed/1.2): $CGS/Tail.speed_scale = 1
-				else: $CGS/Tail.speed_scale = 0.7 + (abs(velocity.x)+abs(velocity.y))/(max_speed/1.1)
-				$CGS/Tail.play(("flop1" if (Time.get_ticks_msec()/125 % 5) else "flop2") if (abs(velocity.x) > max_speed/1.2) else "wag2")
+				if (abs(velocity.x) < max_speed/1.2): $Sprite/Tail.speed_scale = 1
+				else: $Sprite/Tail.speed_scale = 0.7 + (abs(velocity.x)+abs(velocity.y))/(max_speed/1.1)
+				$Sprite/Tail.play(("flop1" if (Time.get_ticks_msec()/125 % 5) else "flop2") if (abs(velocity.x) > max_speed/1.2) else "wag2")
 		
 		
 		
 		else:#!is_on_floor:
-			$CGS/Tail.speed_scale = 2+ ((abs(velocity.x)+abs(velocity.y)) / (max_speed/1.1))
+			$Sprite/Tail.speed_scale = 2+ ((abs(velocity.x)+abs(velocity.y)) / (max_speed/1.1))
 			
 			if abs(velocity.x/2) > abs(velocity.y):
-				$CGS/Tail.play("flop2" if (sign(velocity.y)+1) else "flop1")
+				$Sprite/Tail.play("flop2" if (sign(velocity.y)+1) else "flop1")
 			
 			elif !hardtail && (abs(velocity.y) > max_speed*3):
-				$CGS/Tail.frame = randi () % 3
-				$CGS/Tail.play("wag2" if !(Time.get_ticks_msec()/125 % int($CGS/Tail.speed_scale/2)) else "wag1")
+				$Sprite/Tail.frame = randi () % 3
+				$Sprite/Tail.play("wag2" if !(Time.get_ticks_msec()/125 % int($Sprite/Tail.speed_scale/2)) else "wag1")
 			
 			else:
-				$CGS/Tail.play("wag1" if (sign(velocity.y)+1) else "wag2")
+				$Sprite/Tail.play("wag1" if (sign(velocity.y)+1) else "wag2")
 			
 			
 #################################################################################### SPRITE WORK ###
@@ -249,17 +249,17 @@ func reconfigure():
 	
 	$Pow/Col.disabled = true
 	
-	$CGS/Tail.z_index = 0
-	$CGS/Sprite.z_index = 0
-	$CGS/Arm.z_index = 0
-	$CGS/Finger.z_index = 1
+	$Sprite/Tail.z_index = -1
+	$Sprite.z_index = 0
+	$Sprite/Arm.z_index = 0
+	$Sprite/Finger.z_index = 1
 	
 	anibusy = 0
 	$AniPlay.stop()
 	$AniPlay.play("idle" if !idle_anim else "ani_idle")
 	
-	$CGS/Tail.rotation_degrees = 0
-	$CGS/Tail.rotation = 0
+	$Sprite/Tail.rotation_degrees = 0
+	$Sprite/Tail.rotation = 0
 	set_state(STATES.IDLE)
 
 
@@ -286,10 +286,10 @@ func die():
 
 
 func tail_spin():
-	$CGS/Tail.rotation = 45*facing
+	$Sprite/Tail.rotation = 45*facing
 
 func tail_top():
-	$CGS/Tail.z_index = 1
+	$Sprite/Tail.z_index = 1
 
 
 func respawn():

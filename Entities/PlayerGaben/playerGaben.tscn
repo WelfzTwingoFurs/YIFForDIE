@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://f6k64jk8ytwj" path="res://Assets/PlayerGaben/gaben_pump.png" id="6_itlt0"]
 [ext_resource type="Texture2D" uid="uid://bg8b82b7mdpk2" path="res://Assets/PlayerGaben/gaben_high.png" id="7_61658"]
 [ext_resource type="Texture2D" uid="uid://h3baa1ef65ek" path="res://Assets/PlayerGaben/gaben_tail.png" id="8_8nn7t"]
-[ext_resource type="Shader" path="res://Scripts/playerColorSwap.gdshader" id="9_kr1gc"]
 [ext_resource type="Texture2D" uid="uid://c13bwqt740ei1" path="res://Assets/PlayerGaben/gaben_body.png" id="10_w2nb0"]
 [ext_resource type="Script" path="res://Scripts/PlayerAudioGeneric.gd" id="11_15dc3"]
 [ext_resource type="Texture2D" uid="uid://chhfeew4ec3w" path="res://Assets/PlayerGaben/gaben_empty.png" id="11_i4xun"]
@@ -677,6 +676,60 @@ _data = {
 "ouchf": SubResource("Animation_uhwug")
 }
 
+[sub_resource type="Shader" id="Shader_wghwb"]
+code = "shader_type canvas_item;
+
+uniform int player;
+uniform int size;
+uniform vec4 player1[99] : source_color;
+uniform vec4 player2[99] : source_color;
+uniform vec4 player3[99] : source_color;
+uniform vec4 player4[99] : source_color;
+
+
+
+
+bool colorCheck(vec4 color, vec4 test) {
+	float threshold = 0.05;
+	
+	if (test.r > color.r - threshold 
+	&& test.r < color.r + threshold
+	&&
+	test.g > color.g - threshold 
+	&& test.g < color.g + threshold
+	&&
+	test.b > color.b - threshold 
+	&& test.b < color.b + threshold)
+		{return true;}
+	
+	return false;}
+
+void fragment() {
+	if (player > 1) {
+		vec4 pixel = texture(TEXTURE,UV);
+		
+		//for (int c = 0; c < (player1.length()); c++) {
+		for (int c = 0; c < size; c++) {
+			if (colorCheck (pixel, player1[c])) {
+				if (player == 2) {COLOR = player2[c];}
+				if (player == 3) {COLOR = player3[c];}
+				if (player == 4) {COLOR = player4[c];}
+				}
+			}
+		}
+	}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_je6wo"]
+resource_local_to_scene = true
+shader = SubResource("Shader_wghwb")
+shader_parameter/player = 1
+shader_parameter/size = 8
+shader_parameter/player1 = PackedColorArray(0.498039, 0.498039, 0.498039, 1, 1, 1, 1, 1, 1, 0.937255, 0.501961, 1, 1, 0.501961, 0, 1, 0.32549, 0.32549, 0.32549, 1, 0.207843, 0.207843, 0.207843, 1, 0, 0, 1, 1, 0.764706, 0.764706, 0.764706, 1)
+shader_parameter/player2 = PackedColorArray(0.32549, 0.32549, 0.32549, 1, 0.419302, 0.254527, 0.136436, 1, 0.572549, 0.152941, 0.152941, 1, 1, 1, 0, 1, 0.498039, 0.498039, 0.498039, 1, 0.301961, 0.207843, 0.207843, 1, 0.498039, 0, 0, 1, 0.572549, 0.152941, 0.152941, 1)
+shader_parameter/player3 = PackedColorArray(1, 1, 1, 1, 1, 0.498039, 0, 1, 0.776471, 0.776471, 0.776471, 1, 1, 0, 0, 1, 0.207843, 0.207843, 0.207843, 1, 0.230315, 0.230315, 0.230315, 1, 1, 0, 0, 1, 0.776471, 0.776471, 0.776471, 1)
+shader_parameter/player4 = PackedColorArray(0, 0.336465, 0.138823, 1, 0.207843, 0.678431, 0.639216, 1, 0.658824, 1, 0.32549, 1, 1, 1, 1, 1, 0, 0.337255, 0.137255, 1, 0.236998, 0.290187, 0.355119, 1, 1, 0, 1, 1, 1, 1, 1, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gjhk8"]
 atlas = ExtResource("8_8nn7t")
 region = Rect2(0, 0, 176, 175)
@@ -784,15 +837,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v6eqn"]
-resource_local_to_scene = true
-shader = ExtResource("9_kr1gc")
-shader_parameter/player = 1
-shader_parameter/player1 = PackedColorArray(0.498039, 0.498039, 0.498039, 1, 1, 1, 1, 1, 1, 0.937255, 0.501961, 1, 1, 0.501961, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1)
-shader_parameter/player2 = PackedColorArray(0.968627, 0.945098, 0.541176, 1, 0.603922, 0.207843, 0.207843, 1, 0.207843, 0.207843, 0.207843, 1, 1, 1, 1, 1)
-shader_parameter/player3 = PackedColorArray(1, 1, 1, 1, 0.968627, 0.945098, 0.541176, 1, 0.968627, 0.945098, 1, 1, 1, 0, 0, 1)
-shader_parameter/player4 = PackedColorArray(1, 0, 1, 1, 0.207843, 0.207843, 1, 1, 0.207843, 0.207843, 0.403922, 1, 0.968627, 0.945098, 0.541176, 1)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwofg"]
 size = Vector2(38, 126)
 
@@ -824,32 +868,31 @@ libraries = {
 }
 speed_scale = 0.0
 
-[node name="Tail" type="AnimatedSprite2D" parent="."]
-z_index = -1
-position = Vector2(0, -65)
-sprite_frames = SubResource("SpriteFrames_0o0d0")
-animation = &"flop2"
-
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = -1
-material = SubResource("ShaderMaterial_v6eqn")
+material = SubResource("ShaderMaterial_je6wo")
 position = Vector2(0, -144)
 texture = ExtResource("10_w2nb0")
 hframes = 10
 vframes = 8
 
-[node name="Arm" type="Sprite2D" parent="."]
+[node name="Tail" type="AnimatedSprite2D" parent="Sprite"]
 z_index = -1
 use_parent_material = true
-position = Vector2(0, -144)
+position = Vector2(0, 79)
+sprite_frames = SubResource("SpriteFrames_0o0d0")
+animation = &"flop2"
+
+[node name="Arm" type="Sprite2D" parent="Sprite"]
+z_index = -1
+use_parent_material = true
 texture = ExtResource("11_i4xun")
 hframes = 10
 vframes = 8
 
-[node name="Finger" type="Sprite2D" parent="."]
+[node name="Finger" type="Sprite2D" parent="Sprite"]
 z_index = 1
 use_parent_material = true
-position = Vector2(0, -144)
 texture = ExtResource("11_i4xun")
 hframes = 10
 vframes = 8

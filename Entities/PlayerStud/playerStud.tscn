@@ -1,7 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://ip6kdbgok70w"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerGeneric.gd" id="1_8frao"]
-[ext_resource type="Shader" path="res://Scripts/playerColorSwapCanvas.gdshader" id="2_pv8gf"]
 [ext_resource type="Texture2D" uid="uid://bew6akdghs7eb" path="res://Assets/PlayerStud/stud_emptyhand.png" id="2_w082o"]
 [ext_resource type="Texture2D" uid="uid://d12qotbb7fduj" path="res://Assets/PlayerStud/stud_body.png" id="5_dvdwf"]
 [ext_resource type="Script" path="res://Scripts/PlayerAudioGeneric.gd" id="6_u357e"]
@@ -686,14 +685,59 @@ _data = {
 "ouchf": SubResource("Animation_5rqes")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vg31l"]
+[sub_resource type="Shader" id="Shader_pjqqi"]
+code = "shader_type canvas_item;
+
+uniform int player;
+uniform int size;
+uniform vec4 player1[99] : source_color;
+uniform vec4 player2[99] : source_color;
+uniform vec4 player3[99] : source_color;
+uniform vec4 player4[99] : source_color;
+
+
+
+
+bool colorCheck(vec4 color, vec4 test) {
+	float threshold = 0.05;
+	
+	if (test.r > color.r - threshold 
+	&& test.r < color.r + threshold
+	&&
+	test.g > color.g - threshold 
+	&& test.g < color.g + threshold
+	&&
+	test.b > color.b - threshold 
+	&& test.b < color.b + threshold)
+		{return true;}
+	
+	return false;}
+
+void fragment() {
+	if (player > 1) {
+		vec4 pixel = texture(TEXTURE,UV);
+		
+		//for (int c = 0; c < (player1.length()); c++) {
+		for (int c = 0; c < size; c++) {
+			if (colorCheck (pixel, player1[c])) {
+				if (player == 2) {COLOR = player2[c];}
+				if (player == 3) {COLOR = player3[c];}
+				if (player == 4) {COLOR = player4[c];}
+				}
+			}
+		}
+	}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8sv5i"]
 resource_local_to_scene = true
-shader = ExtResource("2_pv8gf")
-shader_parameter/player = 2
-shader_parameter/player1 = PackedColorArray(1, 0, 1, 1, 0.439216, 0.572549, 0.745098, 1, 1, 0.501961, 0, 1, 0.207843, 0.207843, 0.207843, 1, 0.32549, 0.32549, 0.32549, 1, 0.498039, 0.498039, 0.498039, 1, 1, 1, 0, 1, 0.72549, 0.478431, 0.341176, 1, 0.937255, 0.894118, 0.690196, 1, 0.329412, 0.227451, 0.180392, 1, 1, 0.937255, 0.501961, 1, 1, 1, 1, 1)
-shader_parameter/player2 = PackedColorArray(1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0.498039, 0, 1, 1, 0.901961, 0.360784, 0.286275, 1, 0.498039, 0.498039, 0.498039, 1, 1, 0, 1, 1, 1, 0.498039, 0, 1, 1, 1, 1, 1, 0.258824, 0, 0.0156863, 1, 0, 1, 0, 1, 0, 1, 1, 1)
-shader_parameter/player3 = null
-shader_parameter/player4 = null
+shader = SubResource("Shader_pjqqi")
+shader_parameter/player = 1
+shader_parameter/size = 12
+shader_parameter/player1 = PackedColorArray(1, 0, 1, 1, 0.439216, 0.572549, 0.745098, 1, 1, 0.937255, 0.501961, 1, 0.72549, 0.478431, 0.341176, 1, 0.329412, 0.227451, 0.180392, 1, 0.937255, 0.894118, 0.690196, 1, 1, 0.501961, 0, 1, 0.32549, 0.32549, 0.32549, 1, 0.498039, 0.498039, 0.498039, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0.207843, 0.207843, 0.207843, 1)
+shader_parameter/player2 = PackedColorArray(0.34902, 0.611765, 0.647059, 1, 0.34902, 0.611765, 0.647059, 1, 0.203922, 0.203922, 0.203922, 1, 0.72549, 0.478431, 0.341176, 1, 0.329412, 0.227451, 0.180392, 1, 0.937255, 0.894118, 0.690196, 1, 0.498039, 0.498039, 0.498039, 1, 0.427451, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1)
+shader_parameter/player3 = PackedColorArray(0.152941, 0.152941, 0.152941, 1, 0.152941, 0.152941, 0.152941, 1, 0.419608, 0.278431, 0.160784, 1, 0.72549, 0.478431, 0.341176, 1, 0.329412, 0.227451, 0.180392, 1, 0.937255, 0.894118, 0.690196, 1, 1, 0, 0, 1, 0.498039, 0.498039, 0.498039, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0.207843, 0.207843, 0.207843, 1)
+shader_parameter/player4 = PackedColorArray(0, 0.341176, 0, 1, 0.490196, 0.603922, 0.45098, 1, 0.827451, 0.905882, 0.921569, 1, 0.72549, 0.478431, 0.341176, 1, 0.329412, 0.227451, 0.180392, 1, 0.937255, 0.894118, 0.690196, 1, 1, 1, 0, 1, 0.247059, 0.156863, 0.0823529, 1, 0.152941, 0.152941, 0.152941, 1, 1, 0.498039, 0, 1, 1, 1, 1, 1, 0.207843, 0.207843, 0.207843, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2nii"]
 atlas = ExtResource("8_fpmcp")
@@ -853,35 +897,33 @@ libraries = {
 "": SubResource("AnimationLibrary_p80tc")
 }
 
-[node name="CGS" type="CanvasGroup" parent="."]
-material = SubResource("ShaderMaterial_vg31l")
-
-[node name="Tail" type="AnimatedSprite2D" parent="CGS"]
+[node name="Sprite" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-1, -67)
-sprite_frames = SubResource("SpriteFrames_veapc")
-animation = &"wag2"
-
-[node name="Sprite" type="Sprite2D" parent="CGS"]
-z_index = -1
+material = SubResource("ShaderMaterial_8sv5i")
 position = Vector2(0, -144)
 texture = ExtResource("5_dvdwf")
 hframes = 10
 vframes = 8
 frame = 6
 
-[node name="Arm" type="Sprite2D" parent="CGS"]
+[node name="Tail" type="AnimatedSprite2D" parent="Sprite"]
 z_index = -1
-position = Vector2(0, -144)
+use_parent_material = true
+position = Vector2(-1, 77)
+sprite_frames = SubResource("SpriteFrames_veapc")
+animation = &"wag2"
+
+[node name="Arm" type="Sprite2D" parent="Sprite"]
+z_index = -1
+use_parent_material = true
 texture = ExtResource("2_w082o")
 hframes = 10
 vframes = 8
 frame = 6
 
-[node name="Finger" type="Sprite2D" parent="CGS"]
+[node name="Finger" type="Sprite2D" parent="Sprite"]
 z_index = 1
 use_parent_material = true
-position = Vector2(0, -144)
 texture = ExtResource("2_w082o")
 hframes = 10
 vframes = 8

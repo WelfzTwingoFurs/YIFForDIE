@@ -1,10 +1,11 @@
 shader_type canvas_item;
 
 uniform int player;
-uniform vec4 player1[5] : source_color;
-uniform vec4 player2[5] : source_color;
-uniform vec4 player3[5] : source_color;
-uniform vec4 player4[5] : source_color;
+uniform int size;
+uniform vec4 player1[99] : source_color;
+uniform vec4 player2[99] : source_color;
+uniform vec4 player3[99] : source_color;
+uniform vec4 player4[99] : source_color;
 
 
 
@@ -28,7 +29,8 @@ void fragment() {
 	if (player > 1) {
 		vec4 pixel = texture(TEXTURE,UV);
 		
-		for (int c = 0; c < (player1.length()); c++) {
+		//for (int c = 0; c < (player1.length()); c++) {
+		for (int c = 0; c < size; c++) {
 			if (colorCheck (pixel, player1[c])) {
 				if (player == 2) {COLOR = player2[c];}
 				if (player == 3) {COLOR = player3[c];}
