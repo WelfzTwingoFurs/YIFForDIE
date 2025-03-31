@@ -50,7 +50,7 @@ func _process(_delta): #########################################################
 	$Sprite/Arm.frame = frame
 	#$Sprite/Arm.scale.x = facing * spr_scale.x
 	
-	speak = $Voice.playing if ($AniPlay.current_animation == "ani_melee") else (true if ($Voice.playing && (Time.get_ticks_msec()/100 % 3)) else false)
+	speak = $Voice.playing if ($AniPlay.current_animation == ("ani_melee" if is_on_floor() else "ani_meleeair")) else (true if ($Voice.playing && (Time.get_ticks_msec()/100 % 3)) else false)
 	
 	
 	
@@ -117,7 +117,7 @@ func set_handed(string):
 
 func tail_logic():
 	if pos_tail.size() != 0:
-		$Sprite/Tail.position = pos_tail[frame]*Vector2(facing,1) - $Sprite.position#$Sprite/Tail.position = pos_tail[frame]*Vector2(facing,1)
+		$Sprite/Tail.position = pos_tail[frame] - $Sprite.position
 		#$Sprite/Tail.scale.x = facing
 		if is_on_floor():
 			if abs(velocity.x) < 10 && ($Sprite/Tail.animation == "flop1" or $Sprite/Tail.animation == "flop2"): $Sprite/Tail.play("wag2")
@@ -417,7 +417,7 @@ func state_crouch():
 		if !holding && Input.is_action_just_pressed(("shoot")+str(player)):
 			$AniPlay.speed_scale = 1
 			$AniPlay.stop()
-			$AniPlay.play("ani_melee")
+			$AniPlay.play("ani_melee" if is_on_floor() else "ani_meleeair")
 			set_state(STATES.IDLE)
 		
 		
@@ -478,10 +478,10 @@ func state_idle():
 			if !holding && Input.is_action_just_pressed(("shoot")+str(player)):#Kick!
 				$AniPlay.speed_scale = 1
 				if anibusy < 3: $AniPlay.stop()
-				$AniPlay.play("ani_melee")
+				$AniPlay.play("ani_melee" if is_on_floor() else "ani_meleeair")
 			
 			
-			if $AniPlay.current_animation != "ani_melee":#Animation transition fixes
+			if $AniPlay.current_animation != ("ani_melee" if is_on_floor() else "ani_meleeair"):#Animation transition fixes
 				if $AniPlay.current_animation == "ani_jump": anibusy = 0
 				
 				if ($AniPlay.current_animation == "ani_run") && !Input.is_action_pressed("jump"+str(player)) && (sign(velocity.y) > 0):
@@ -566,7 +566,7 @@ func state_idle():
 				if !holding && Input.is_action_just_pressed(("shoot")+str(player)):
 					$AniPlay.speed_scale = 1
 					$AniPlay.stop()
-					$AniPlay.play("ani_melee")
+					$AniPlay.play("ani_melee" if is_on_floor() else "ani_meleeair")
 					anibusy = 3
 			
 			
@@ -642,11 +642,11 @@ func invert_facing(): facing *= -1
 
 
 func force_melee():
-	if $AniPlay.current_animation != "ani_melee":
+	if $AniPlay.current_animation != ("ani_melee" if is_on_floor() else "ani_meleeair"):
 		anibusy = 3
 		$AniPlay.speed_scale = 1
 		$AniPlay.stop()
-		$AniPlay.play("ani_melee")
+		$AniPlay.play("ani_melee" if is_on_floor() else "ani_meleeair")
 		set_state(STATES.IDLE)
 
 func melee_delay(): if Input.is_action_pressed("shoot"+str(player)): $AniPlay.speed_scale /= 2

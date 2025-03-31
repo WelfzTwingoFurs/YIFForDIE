@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4f0x6mepd7rj"]
+[gd_scene load_steps=19 format=3 uid="uid://b4f0x6mepd7rj"]
 
 [ext_resource type="Script" path="res://Levels/LevelScript.gd" id="1_c54gj"]
 [ext_resource type="PackedScene" uid="uid://b6amf2ybssyrp" path="res://Assets/tileauto_grass.tscn" id="2_a8huf"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bmwgeh3pscxfq" path="res://Assets/Guns/gun_bfg.png" id="14_vulr5"]
 [ext_resource type="PackedScene" uid="uid://cvpmj3lol5d3g" path="res://Entities/Guns/Gun_BFG.tscn" id="15_n3jyn"]
 [ext_resource type="Texture2D" uid="uid://d12qotbb7fduj" path="res://Assets/PlayerStud/stud_body.png" id="17_sciph"]
+[ext_resource type="PackedScene" uid="uid://clfbycmpswcix" path="res://Entities/Guns/Gun_Chaingun.tscn" id="18_kocyx"]
 
 [node name="sceneTWO" type="Node2D"]
 script = ExtResource("1_c54gj")
@@ -98,3 +99,6 @@ position = Vector2(581.426, 50.9692)
 texture = ExtResource("17_sciph")
 hframes = 10
 vframes = 8
+
+[node name="GunBFG" parent="." instance=ExtResource("18_kocyx")]
+position = Vector2(916.333, 110.404)

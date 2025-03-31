@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dqykvsh5x1kvr"]
+[gd_scene load_steps=43 format=3 uid="uid://dqykvsh5x1kvr"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerGeneric.gd" id="1_4nhak"]
 [ext_resource type="Texture2D" uid="uid://berattqyrh7fr" path="res://Assets/PlayerGaben/gaben_onehand.png" id="3_q34ih"]
@@ -203,6 +203,88 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [13, 14, 15, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [3],
+"method": &"set_anibusy"
+}, {
+"args": [],
+"method": &"facing_input"
+}, {
+"args": [],
+"method": &"melee_delay"
+}, {
+"args": [2],
+"method": &"set_anibusy"
+}, {
+"args": [0],
+"method": &"set_anibusy"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sfx")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"step"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pow/Col:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Voice")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_85khe"]
+resource_name = "ani_meleeair"
+length = 0.32
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [23, 24, 25, 7]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -662,6 +744,7 @@ _data = {
 "ani_jump": SubResource("Animation_lqesu"),
 "ani_land": SubResource("Animation_i0idj"),
 "ani_melee": SubResource("Animation_lcifg"),
+"ani_meleeair": SubResource("Animation_85khe"),
 "ani_rejump": SubResource("Animation_0g4ic"),
 "ani_run": SubResource("Animation_dy22d"),
 "ani_runoff": SubResource("Animation_nfbfm"),
@@ -726,8 +809,8 @@ shader = SubResource("Shader_wghwb")
 shader_parameter/player = 1
 shader_parameter/size = 8
 shader_parameter/player1 = PackedColorArray(0.498039, 0.498039, 0.498039, 1, 1, 1, 1, 1, 1, 0.937255, 0.501961, 1, 1, 0.501961, 0, 1, 0.32549, 0.32549, 0.32549, 1, 0.207843, 0.207843, 0.207843, 1, 0, 0, 1, 1, 0.764706, 0.764706, 0.764706, 1)
-shader_parameter/player2 = PackedColorArray(0.32549, 0.32549, 0.32549, 1, 0.419302, 0.254527, 0.136436, 1, 0.572549, 0.152941, 0.152941, 1, 1, 1, 0, 1, 0.498039, 0.498039, 0.498039, 1, 0.301961, 0.207843, 0.207843, 1, 0.498039, 0, 0, 1, 0.572549, 0.152941, 0.152941, 1)
-shader_parameter/player3 = PackedColorArray(1, 1, 1, 1, 1, 0.498039, 0, 1, 0.776471, 0.776471, 0.776471, 1, 1, 0, 0, 1, 0.207843, 0.207843, 0.207843, 1, 0.230315, 0.230315, 0.230315, 1, 1, 0, 0, 1, 0.776471, 0.776471, 0.776471, 1)
+shader_parameter/player2 = PackedColorArray(0.32549, 0.32549, 0.32549, 1, 0.419302, 0.254527, 0.136436, 1, 0.572549, 0.152941, 0.152941, 1, 1, 1, 0, 1, 0.498039, 0.498039, 0.498039, 1, 0.301961, 0.207843, 0.207843, 1, 1, 0, 0, 1, 0.572549, 0.152941, 0.152941, 1)
+shader_parameter/player3 = PackedColorArray(1, 1, 1, 1, 1, 0.498039, 0, 1, 0.776471, 0.776471, 0.776471, 1, 1, 0, 0, 1, 0.207843, 0.207843, 0.207843, 1, 0.230315, 0.230315, 0.230315, 1, 0, 1, 1, 1, 0.776471, 0.776471, 0.776471, 1)
 shader_parameter/player4 = PackedColorArray(0, 0.336465, 0.138823, 1, 0.207843, 0.678431, 0.639216, 1, 0.658824, 1, 0.32549, 1, 1, 1, 1, 1, 0, 0.337255, 0.137255, 1, 0.236998, 0.290187, 0.355119, 1, 1, 0, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gjhk8"]
@@ -847,12 +930,12 @@ size = Vector2(51.9466, 109.012)
 collision_layer = 2
 script = ExtResource("1_4nhak")
 character_name = "Gaben Freeware"
-frame = 18
+frame = 23
 pos_highaim = [Vector2(40, -118), Vector2(41, -105), Vector2(26, -104), Vector2(40, -105), Vector2(34, -107), Vector2(28, -89), Vector2(43, -110), Vector2(45, -104), Vector2(24, -108), Vector2(0, 0), Vector2(40, -118), Vector2(53, -62), Vector2(59, -67), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(22, -88), Vector2(22, -78), Vector2(0, 0), Vector2(36, -118)]
 pos_hip = [Vector2(9, -91), Vector2(26, -81), Vector2(8, -82), Vector2(26, -81), Vector2(20, -81), Vector2(13, -67), Vector2(11, -85), Vector2(16, -79), Vector2(9, -83), Vector2(0, 0), Vector2(9, -91), Vector2(28, -36), Vector2(32, -40), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(15, -87), Vector2(18, -78), Vector2(0, 0), Vector2(18, -90)]
 pos_reload = [Vector2(33, -97), Vector2(51, -84), Vector2(38, -85), Vector2(51, -84), Vector2(49, -88), Vector2(41, -70), Vector2(40, -89), Vector2(44, -87), Vector2(33, -88), Vector2(0, 0), Vector2(41, -99), Vector2(53, -44), Vector2(57, -46), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(40, -90), Vector2(30, -81), Vector2(0, 0), Vector2(33, -100)]
 pos_onehanded = [Vector2(76, -115), Vector2(76, -98), Vector2(75, -101), Vector2(71, -99), Vector2(69, -107), Vector2(73, -88), Vector2(77, -107), Vector2(70, -89), Vector2(65, -100), Vector2(0, 0), Vector2(76, -115), Vector2(77, -56), Vector2(71, -58), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(44, -85), Vector2(42, -84), Vector2(0, 0), Vector2(63, -91)]
-pos_tail = [Vector2(0, -65), Vector2(-3, -63), Vector2(0, -63), Vector2(-3, -63), Vector2(-6, -64), Vector2(-3, -52), Vector2(-5, -71), Vector2(-13, -79), Vector2(-15, -63), Vector2(0, 0), Vector2(0, -65), Vector2(-23, -45), Vector2(-15, -52), Vector2(0, -65), Vector2(0, -65), Vector2(0, -65), Vector2(-5, -67), Vector2(8, -62), Vector2(-5, -25), Vector2(0, -65), null, null, null, null, null, null, null, null, Vector2(10, -48), Vector2(-5, -63)]
+pos_tail = [Vector2(0, -65), Vector2(-3, -63), Vector2(0, -63), Vector2(-3, -63), Vector2(-6, -64), Vector2(-3, -52), Vector2(-5, -71), Vector2(-13, -79), Vector2(-15, -63), Vector2(0, 0), Vector2(0, -65), Vector2(-23, -45), Vector2(-15, -52), Vector2(0, -65), Vector2(0, -65), Vector2(0, -65), Vector2(-5, -67), Vector2(8, -62), Vector2(-5, -25), Vector2(0, -65), null, null, null, Vector2(-8, -74), Vector2(-24, -71), Vector2(-9, -64), null, null, Vector2(10, -48), Vector2(-5, -63)]
 hardtail = true
 handed_empty = ExtResource("11_i4xun")
 handed_one = ExtResource("3_q34ih")
@@ -866,7 +949,6 @@ spr_step = 40
 libraries = {
 "": SubResource("AnimationLibrary_m5mmc")
 }
-speed_scale = 0.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = -1
@@ -879,7 +961,7 @@ vframes = 8
 [node name="Tail" type="AnimatedSprite2D" parent="Sprite"]
 z_index = -1
 use_parent_material = true
-position = Vector2(0, 79)
+position = Vector2(0, 65)
 sprite_frames = SubResource("SpriteFrames_0o0d0")
 animation = &"flop2"
 
