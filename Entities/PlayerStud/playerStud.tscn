@@ -904,7 +904,6 @@ position = Vector2(0, -144)
 texture = ExtResource("5_dvdwf")
 hframes = 10
 vframes = 8
-frame = 6
 
 [node name="Tail" type="AnimatedSprite2D" parent="Sprite"]
 z_index = -1
@@ -919,7 +918,6 @@ use_parent_material = true
 texture = ExtResource("2_w082o")
 hframes = 10
 vframes = 8
-frame = 6
 
 [node name="Finger" type="Sprite2D" parent="Sprite"]
 z_index = 1
@@ -927,7 +925,7 @@ use_parent_material = true
 texture = ExtResource("2_w082o")
 hframes = 10
 vframes = 8
-frame = 46
+frame = 40
 
 [node name="Col" type="CollisionPolygon2D" parent="."]
 visible = false

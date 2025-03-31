@@ -65,7 +65,7 @@ func _process(_delta): #########################################################
 			_:
 				$Sprite/Finger.visible = true
 				$Sprite/Finger.frame = frame + spr_step
-				$Sprite/Finger.scale.x = facing *spr_scale.x
+				#$Sprite/Finger.scale.x = facing *spr_scale.x
 	
 	
 	

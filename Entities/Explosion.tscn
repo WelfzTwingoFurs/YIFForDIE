@@ -46,7 +46,7 @@ polygon = PackedVector2Array(-100, -100, -50, -100, 0, -100, 50, -100, 100, -100
 uv = PackedVector2Array(800, 0, 850, 0, 900, 0, 950, 0, 1000, 0, 1000, 50, 1000, 100, 1000, 150, 1000, 200, 950, 200, 900, 200, 850, 200, 800, 200, 800, 150, 800, 100, 800, 50)
 script = ExtResource("2_n7wia")
 resolution = Vector2(1400, 200)
-frame = 1
+frame = 0
 verts = 5
 
 [node name="AniPlay" type="AnimationPlayer" parent="."]
@@ -58,7 +58,7 @@ speed_scale = 3.0
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("2_7s120")
-audios = Array[String](["res://Assets/Guns/boom1.wav", "res://Assets/Guns/boom2.wav", "res://Assets/Guns/boom3.wav"])
+audios = Array[String](["res://Assets/Audio/boom1.wav", "res://Assets/Audio/boom2.wav", "res://Assets/Audio/boom3.wav"])
 
 [node name="Node" type="Node2D" parent="."]
 
