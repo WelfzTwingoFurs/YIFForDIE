@@ -184,6 +184,7 @@ speed_scale = 3.0
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_iygsp")
 vframes = 3
+frame = 2
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("3_25v42")

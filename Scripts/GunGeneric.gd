@@ -104,6 +104,13 @@ func _physics_process(_delta):
 		#kick while reloading, deactivated cuz not sure why it will always kick when close??
 		#elif busy && (holder.state != 0) && ($AniPlay.current_animation == "reload") && Input.is_action_just_pressed("shoot"+str(holder.player)):
 		#	close_check()
+	extra_physics_process()
+
+func extra_physics_process():
+	pass
+
+
+
 
 
 
@@ -141,6 +148,7 @@ func _process(_delta):
 			3: position = holder.position + (holder.pos_hip[holder.frame]*Vector2(holder.facing,1))
 			4: position = holder.position + (holder.pos_hip[holder.frame]*Vector2(holder.facing,1))
 			5: position = holder.position + (holder.pos_highaim[holder.frame]*Vector2(holder.facing,1))
+			6: position = holder.position + (holder.pos_chaingun[holder.frame]*Vector2(holder.facing,1))
 			
 		#dposition = holder.position + (holder.pos_onehanded[holder.frame]*Vector2(holder.facing,1))
 		velocity = Vector2(0,0)
@@ -174,6 +182,10 @@ func _process(_delta):
 		
 		
 		
+	extra_process()
+
+func extra_process():
+	pass
 
 #func set_handstate(valoo): handstate = valoo
 #

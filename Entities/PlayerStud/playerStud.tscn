@@ -1,7 +1,7 @@
 [gd_scene load_steps=40 format=3 uid="uid://ip6kdbgok70w"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerGeneric.gd" id="1_8frao"]
-[ext_resource type="Texture2D" uid="uid://wet87kxa18ng" path="res://Assets/PlayerStud/stud_hip.png" id="4_q26k4"]
+[ext_resource type="Texture2D" uid="uid://bew6akdghs7eb" path="res://Assets/PlayerStud/stud_emptyhand.png" id="4_gsa0p"]
 [ext_resource type="Texture2D" uid="uid://d12qotbb7fduj" path="res://Assets/PlayerStud/stud_body.png" id="5_dvdwf"]
 [ext_resource type="Script" path="res://Scripts/PlayerAudioGeneric.gd" id="6_u357e"]
 [ext_resource type="Script" path="res://Entities/PlayerStud/VoiceStud.gd" id="7_35sky"]
@@ -966,11 +966,12 @@ size = Vector2(51.9466, 109.012)
 collision_layer = 2
 script = ExtResource("1_8frao")
 character_name = "Stud Stallion"
-frame = 23
-pos_highaim = [Vector2(43, -119), Vector2(37, -110), Vector2(39, -116), Vector2(50, -102), Vector2(45, -117), Vector2(58, -92), Vector2(42, -111), Vector2(30, -106), Vector2(34, -102), Vector2(0, 0), Vector2(30, -112), Vector2(53, -61), Vector2(54, -65), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(34, -86), Vector2(7, -89), Vector2(0, 0), Vector2(43, -119)]
-pos_hip = [Vector2(24, -97), Vector2(28, -91), Vector2(35, -98), Vector2(45, -89), Vector2(36, -98), Vector2(48, -74), Vector2(35, -93), Vector2(25, -86), Vector2(26, -83), Vector2(0, 0), Vector2(26, -93), Vector2(48, -44), Vector2(45, -47), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(28, -91), Vector2(6, -94), Vector2(0, 0), Vector2(24, -97)]
-pos_reload = [Vector2(36, -99), Vector2(36, -94), Vector2(40, -102), Vector2(59, -90), Vector2(45, -103), Vector2(58, -76), Vector2(46, -97), Vector2(34, -90), Vector2(41, -84), Vector2(0, 0), Vector2(41, -99), Vector2(59, -53), Vector2(63, -52), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(37, -91), Vector2(22, -87), Vector2(0, 0), Vector2(36, -99)]
-pos_onehanded = [Vector2(76, -123), Vector2(70, -119), Vector2(65, -125), Vector2(55, -115), Vector2(62, -124), Vector2(84, -92), Vector2(80, -123), Vector2(63, -113), Vector2(61, -111), Vector2(0, 0), Vector2(54, -85), Vector2(72, -70), Vector2(63, -73), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(44, -92), Vector2(39, -88), Vector2(0, 0), Vector2(76, -123)]
+frame = 19
+pos_chaingun = [Vector2(42, -70), Vector2(40, -63), Vector2(36, -69), Vector2(44, -58), Vector2(43, -72), Vector2(56, -45), Vector2(45, -67), Vector2(31, -59), Vector2(38, -58), null, Vector2(45, -67), Vector2(49, -20), Vector2(48, -23), null, null, null, Vector2(45, -66), Vector2(30, -62), null, Vector2(42, -70), null, null, null, Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), null, null, null, null]
+pos_highaim = [Vector2(43, -119), Vector2(37, -110), Vector2(39, -116), Vector2(50, -102), Vector2(45, -117), Vector2(58, -92), Vector2(42, -111), Vector2(30, -106), Vector2(34, -102), Vector2(0, 0), Vector2(30, -112), Vector2(53, -61), Vector2(54, -65), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(34, -86), Vector2(7, -89), Vector2(0, 0), Vector2(43, -119), null, null, null, Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), null, null, null, null]
+pos_hip = [Vector2(24, -97), Vector2(28, -91), Vector2(35, -98), Vector2(45, -89), Vector2(36, -98), Vector2(48, -74), Vector2(35, -93), Vector2(25, -86), Vector2(26, -83), Vector2(0, 0), Vector2(26, -93), Vector2(48, -44), Vector2(45, -47), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(28, -91), Vector2(6, -94), Vector2(0, 0), Vector2(24, -97), null, null, null, Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), null, null, null, null]
+pos_reload = [Vector2(36, -99), Vector2(36, -94), Vector2(40, -102), Vector2(59, -90), Vector2(45, -103), Vector2(58, -76), Vector2(46, -97), Vector2(34, -90), Vector2(41, -84), Vector2(0, 0), Vector2(41, -99), Vector2(59, -53), Vector2(63, -52), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(37, -91), Vector2(22, -87), Vector2(0, 0), Vector2(36, -99), null, null, null, Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), null, null, null, null]
+pos_onehanded = [Vector2(76, -123), Vector2(70, -119), Vector2(65, -125), Vector2(55, -115), Vector2(62, -124), Vector2(84, -92), Vector2(80, -123), Vector2(63, -113), Vector2(61, -111), Vector2(0, 0), Vector2(54, -85), Vector2(72, -70), Vector2(63, -73), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(44, -92), Vector2(39, -88), Vector2(0, 0), Vector2(76, -123), null, null, null, Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), null, null, null, null]
 pos_tail = [Vector2(-1, -67), Vector2(-15, -64), Vector2(-18, -72), Vector2(-9, -62), Vector2(-19, -74), Vector2(-4, -57), Vector2(-7, -71), Vector2(-9, -64), Vector2(-17, -61), Vector2(0, 0), Vector2(0, -68), Vector2(-13, -42), Vector2(-17, -40), Vector2(4, -73), Vector2(-5, -74), Vector2(0, -68), Vector2(-13, -68), Vector2(-17, -61), Vector2(19, -30), Vector2(-1, -67), null, null, null, Vector2(-16, -69), Vector2(0, -65), Vector2(-6, -73), null, null, Vector2(17, -38), Vector2(-1, -68)]
 hardtail = true
 idle_anim = true
@@ -982,12 +983,12 @@ libraries = {
 }
 
 [node name="Sprite" type="Sprite2D" parent="."]
-z_index = -1
 material = SubResource("ShaderMaterial_8sv5i")
 position = Vector2(0, -144)
 texture = ExtResource("5_dvdwf")
 hframes = 10
 vframes = 8
+frame = 19
 
 [node name="Tail" type="AnimatedSprite2D" parent="Sprite"]
 z_index = -1
@@ -997,19 +998,19 @@ sprite_frames = SubResource("SpriteFrames_veapc")
 animation = &"wag2"
 
 [node name="Arm" type="Sprite2D" parent="Sprite"]
-z_index = -1
 use_parent_material = true
-texture = ExtResource("4_q26k4")
+texture = ExtResource("4_gsa0p")
 hframes = 10
 vframes = 8
+frame = 19
 
 [node name="Finger" type="Sprite2D" parent="Sprite"]
 z_index = 1
 use_parent_material = true
-texture = ExtResource("4_q26k4")
+texture = ExtResource("4_gsa0p")
 hframes = 10
 vframes = 8
-frame = 40
+frame = 59
 
 [node name="Col" type="CollisionPolygon2D" parent="."]
 visible = false

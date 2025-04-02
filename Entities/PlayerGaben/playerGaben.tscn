@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dqykvsh5x1kvr"]
+[gd_scene load_steps=44 format=3 uid="uid://dqykvsh5x1kvr"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerGeneric.gd" id="1_4nhak"]
 [ext_resource type="Texture2D" uid="uid://berattqyrh7fr" path="res://Assets/PlayerGaben/gaben_onehand.png" id="3_q34ih"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://f6k64jk8ytwj" path="res://Assets/PlayerGaben/gaben_pump.png" id="6_itlt0"]
 [ext_resource type="Texture2D" uid="uid://bg8b82b7mdpk2" path="res://Assets/PlayerGaben/gaben_high.png" id="7_61658"]
 [ext_resource type="Texture2D" uid="uid://h3baa1ef65ek" path="res://Assets/PlayerGaben/gaben_tail.png" id="8_8nn7t"]
+[ext_resource type="Texture2D" uid="uid://c37fnwhe1jc8r" path="res://Assets/PlayerGaben/gaben_chain.png" id="8_i52hj"]
 [ext_resource type="Texture2D" uid="uid://c13bwqt740ei1" path="res://Assets/PlayerGaben/gaben_body.png" id="10_w2nb0"]
 [ext_resource type="Script" path="res://Scripts/PlayerAudioGeneric.gd" id="11_15dc3"]
 [ext_resource type="Texture2D" uid="uid://chhfeew4ec3w" path="res://Assets/PlayerGaben/gaben_empty.png" id="11_i4xun"]
@@ -930,11 +931,11 @@ size = Vector2(51.9466, 109.012)
 collision_layer = 2
 script = ExtResource("1_4nhak")
 character_name = "Gaben Freeware"
-frame = 23
-pos_highaim = [Vector2(40, -118), Vector2(41, -105), Vector2(26, -104), Vector2(40, -105), Vector2(34, -107), Vector2(28, -89), Vector2(43, -110), Vector2(45, -104), Vector2(24, -108), Vector2(0, 0), Vector2(40, -118), Vector2(53, -62), Vector2(59, -67), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(22, -88), Vector2(22, -78), Vector2(0, 0), Vector2(36, -118)]
-pos_hip = [Vector2(9, -91), Vector2(26, -81), Vector2(8, -82), Vector2(26, -81), Vector2(20, -81), Vector2(13, -67), Vector2(11, -85), Vector2(16, -79), Vector2(9, -83), Vector2(0, 0), Vector2(9, -91), Vector2(28, -36), Vector2(32, -40), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(15, -87), Vector2(18, -78), Vector2(0, 0), Vector2(18, -90)]
-pos_reload = [Vector2(33, -97), Vector2(51, -84), Vector2(38, -85), Vector2(51, -84), Vector2(49, -88), Vector2(41, -70), Vector2(40, -89), Vector2(44, -87), Vector2(33, -88), Vector2(0, 0), Vector2(41, -99), Vector2(53, -44), Vector2(57, -46), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(40, -90), Vector2(30, -81), Vector2(0, 0), Vector2(33, -100)]
-pos_onehanded = [Vector2(76, -115), Vector2(76, -98), Vector2(75, -101), Vector2(71, -99), Vector2(69, -107), Vector2(73, -88), Vector2(77, -107), Vector2(70, -89), Vector2(65, -100), Vector2(0, 0), Vector2(76, -115), Vector2(77, -56), Vector2(71, -58), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(44, -85), Vector2(42, -84), Vector2(0, 0), Vector2(63, -91)]
+pos_chaingun = [Vector2(43, -72), Vector2(50, -57), Vector2(44, -61), Vector2(52, -55), Vector2(46, -60), Vector2(47, -47), Vector2(48, -65), Vector2(46, -58), Vector2(39, -60), null, Vector2(43, -72), Vector2(53, -16), Vector2(58, -17), null, null, null, Vector2(51, -68), Vector2(41, -56), null, Vector2(45, -73), null, null, null, Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), null, null, null, null]
+pos_highaim = [Vector2(40, -118), Vector2(41, -105), Vector2(26, -104), Vector2(40, -105), Vector2(34, -107), Vector2(28, -89), Vector2(43, -110), Vector2(45, -104), Vector2(24, -108), Vector2(0, 0), Vector2(40, -118), Vector2(53, -62), Vector2(59, -67), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(22, -88), Vector2(22, -78), Vector2(0, 0), Vector2(36, -118), null, null, null, Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), null, null, null, null]
+pos_hip = [Vector2(9, -91), Vector2(26, -81), Vector2(8, -82), Vector2(26, -81), Vector2(20, -81), Vector2(13, -67), Vector2(11, -85), Vector2(16, -79), Vector2(9, -83), Vector2(0, 0), Vector2(9, -91), Vector2(28, -36), Vector2(32, -40), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(15, -87), Vector2(18, -78), Vector2(0, 0), Vector2(18, -90), null, null, null, Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), null, null, null, null]
+pos_reload = [Vector2(33, -97), Vector2(51, -84), Vector2(38, -85), Vector2(51, -84), Vector2(49, -88), Vector2(41, -70), Vector2(40, -89), Vector2(44, -87), Vector2(33, -88), Vector2(0, 0), Vector2(41, -99), Vector2(53, -44), Vector2(57, -46), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(40, -90), Vector2(30, -81), Vector2(0, 0), Vector2(33, -100), null, null, null, Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), null, null, null, null]
+pos_onehanded = [Vector2(76, -115), Vector2(76, -98), Vector2(75, -101), Vector2(71, -99), Vector2(69, -107), Vector2(73, -88), Vector2(77, -107), Vector2(70, -89), Vector2(65, -100), Vector2(0, 0), Vector2(76, -115), Vector2(77, -56), Vector2(71, -58), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(44, -85), Vector2(42, -84), Vector2(0, 0), Vector2(63, -91), null, null, null, Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), null, null, null, null]
 pos_tail = [Vector2(0, -65), Vector2(-3, -63), Vector2(0, -63), Vector2(-3, -63), Vector2(-6, -64), Vector2(-3, -52), Vector2(-5, -71), Vector2(-13, -79), Vector2(-15, -63), Vector2(0, 0), Vector2(0, -65), Vector2(-23, -45), Vector2(-15, -52), Vector2(0, -65), Vector2(0, -65), Vector2(0, -65), Vector2(-5, -67), Vector2(8, -62), Vector2(-5, -25), Vector2(0, -65), null, null, null, Vector2(-8, -74), Vector2(-24, -71), Vector2(-9, -64), null, null, Vector2(10, -48), Vector2(-5, -63)]
 hardtail = true
 handed_empty = ExtResource("11_i4xun")
@@ -943,6 +944,7 @@ handed_reload = ExtResource("4_7df1i")
 handed_hip = ExtResource("5_a50yg")
 handed_hip_pump = ExtResource("6_itlt0")
 handed_highaim = ExtResource("7_61658")
+handed_chaingun = ExtResource("8_i52hj")
 spr_step = 40
 
 [node name="AniPlay" type="AnimationPlayer" parent="."]
@@ -951,7 +953,6 @@ libraries = {
 }
 
 [node name="Sprite" type="Sprite2D" parent="."]
-z_index = -1
 material = SubResource("ShaderMaterial_je6wo")
 position = Vector2(0, -144)
 texture = ExtResource("10_w2nb0")
@@ -966,7 +967,6 @@ sprite_frames = SubResource("SpriteFrames_0o0d0")
 animation = &"flop2"
 
 [node name="Arm" type="Sprite2D" parent="Sprite"]
-z_index = -1
 use_parent_material = true
 texture = ExtResource("11_i4xun")
 hframes = 10

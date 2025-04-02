@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var character_name = ""
 @export var player = 1
 @export var frame = 0
+@export var pos_chaingun = []
 @export var pos_highaim = []
 @export var pos_hip = []
 @export var pos_reload = []
@@ -36,28 +37,36 @@ var low_limit = INF
 ####################################################################################################
 ####################################################################################################
 func _process(_delta): ############################################################# SPRITE WORK ###
-	queue_redraw()
-	if (position.y > low_limit) && HP > 0:
-		$Voice.die()
-		HP = -150
-		set_state(STATES.WAIT)
-	
-	#print(player)
-	$Sprite.material.set_shader_parameter("player", player)
-	$Sprite.frame = (frame + (spr_step*int(speak)))
-	$Sprite.scale.x = facing * spr_scale.x
-	
-	$Sprite/Arm.frame = frame
-	#$Sprite/Arm.scale.x = facing * spr_scale.x
-	
-	speak = $Voice.playing if ($AniPlay.current_animation == ("ani_melee" if is_on_floor() else "ani_meleeair")) else (true if ($Voice.playing && (Time.get_ticks_msec()/100 % 3)) else false)
-	
-	
-	
 	if Engine.is_editor_hint():
+		$Sprite.material.set_shader_parameter("player", player)
+		$Sprite.frame = frame
+		$Sprite/Arm.frame = frame
 		$Sprite/Finger.frame = frame + spr_step
-		#$Sprite/Finger.scale.x = facing *spr_scale.x
+		print(frame,$Sprite/GUN.position)
+	
 	else:
+		queue_redraw()
+		if (position.y > low_limit) && HP > 0:
+			$Voice.die()
+			HP = -150
+			set_state(STATES.WAIT)
+		
+		#print(player)
+		$Sprite.material.set_shader_parameter("player", player)
+		$Sprite.frame = (frame + (spr_step*int(speak)))
+		$Sprite.scale.x = facing * spr_scale.x
+		
+		$Sprite/Arm.frame = frame
+		#$Sprite/Arm.scale.x = facing * spr_scale.x
+		
+		speak = $Voice.playing if ($AniPlay.current_animation == ("ani_melee" if is_on_floor() else "ani_meleeair")) else (true if ($Voice.playing && (Time.get_ticks_msec()/100 % 3)) else false)
+		
+		
+		
+		#if Engine.is_editor_hint():
+		#	$Sprite/Finger.frame = frame + spr_step
+		#	#$Sprite/Finger.scale.x = facing *spr_scale.x
+		#else:
 		match holding:
 			false:
 				$Sprite/Finger.visible = false
@@ -66,11 +75,11 @@ func _process(_delta): #########################################################
 				$Sprite/Finger.visible = true
 				$Sprite/Finger.frame = frame + spr_step
 				#$Sprite/Finger.scale.x = facing *spr_scale.x
-	
-	
-	
-	#make gun invisible if frame has no position for it
-	if holding: holding.visible = (false if ((pos_onehanded[frame].x == 0) && (pos_onehanded[frame].y == 0)) else true)
+		
+		
+		
+		#make gun invisible if frame has no position for it
+		if holding: holding.visible = (false if ((pos_onehanded[frame].x == 0) && (pos_onehanded[frame].y == 0)) else true)
 
 
 
@@ -85,6 +94,7 @@ func _process(_delta): #########################################################
 @export var handed_hip = preload("res://Assets/PlayerStud/stud_hip.png")
 @export var handed_hip_pump = preload("res://Assets/PlayerStud/stud_hippump.png")
 @export var handed_highaim = preload("res://Assets/PlayerStud/stud_highaim.png")
+@export var handed_chaingun = preload("res://Assets/PlayerStud/stud_chain.png")
 @export var spr_step = 20
 
 func set_handed(string):
@@ -104,6 +114,9 @@ func set_handed(string):
 		5:
 			$Sprite/Arm.texture = handed_highaim
 			$Sprite/Finger.texture = handed_highaim
+		6:
+			$Sprite/Arm.texture = handed_chaingun
+			$Sprite/Finger.texture = handed_chaingun
 		_:
 			$Sprite/Arm.texture = handed_empty
 			$Sprite/Finger.texture = handed_empty
@@ -203,7 +216,8 @@ func _physics_process(_delta):
 		
 		tail_logic()
 		if Input.is_action_just_pressed("taunt"+str(player)): $Voice.taunt()
-
+		
+		if $AniPlay.current_animation != ("ani_melee" if is_on_floor() else "ani_meleeair"): $Pow/Col.disabled = true#cheap fix
 
 func _draw():
 	if HP > 0:
