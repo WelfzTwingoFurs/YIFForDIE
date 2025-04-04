@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://21kv3pl2rqsx"]
 
-[ext_resource type="PackedScene" uid="uid://b6amf2ybssyrp" path="res://Assets/tileauto_grass.tscn" id="1_edclv"]
+[ext_resource type="PackedScene" uid="uid://b6amf2ybssyrp" path="res://Assets/tileauto.tscn" id="1_edclv"]
 [ext_resource type="Script" path="res://Levels/LevelScript.gd" id="1_pxe6e"]
 [ext_resource type="Script" path="res://Scripts/GunSpawner.gd" id="3_ixu7n"]
 [ext_resource type="PackedScene" uid="uid://dw6gg173dqvsr" path="res://Entities/Guns/Gun_Sniper.tscn" id="3_loik4"]

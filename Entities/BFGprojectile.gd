@@ -41,7 +41,7 @@ func _draw():
 
 func shock(body):
 	if body.is_in_group("player"):
-		body.take_damage(1, knockback, 0, self, -1)
+		body.take_damage(3.5, knockback, 0, self, -1)
 		$Sfx.play()
 
 func _on_area_body_entered(body):

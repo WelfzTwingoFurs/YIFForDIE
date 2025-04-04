@@ -35,12 +35,19 @@ func try_shoot():
 		eject_case()
 
 func extra_physics_process():
-	if (!holder or !Input.is_action_pressed("shoot"+str(holder.player))) && ($AniPlay.speed_scale > 0):
+	if ($AniPlay.speed_scale > 0) && (!holder or !Input.is_action_pressed("shoot"+str(holder.player))):
 		$AniPlay.play("release")
+		if holder && Input.is_action_just_released("shoot"+str(holder.player)) && ($AniPlay.speed_scale > 1.5):
+			$Sfx.release()
+	
+	elif holder && Input.is_action_just_pressed("shoot"+str(holder.player)):
+		$Sfx.charge()
+	
 	
 	if (!holder or !Input.is_action_pressed("shoot"+str(holder.player))):
 		$AniPlay.speed_scale = lerp($AniPlay.speed_scale, 0.0, 0.05)
 		weight_divi = lerp(weight_divi, 1.25, 0.05)
+		
 	elif Input.is_action_pressed("shoot"+str(holder.player)):
 		$AniPlay.speed_scale = lerp($AniPlay.speed_scale, 3.0, 0.05)
 		weight_divi = lerp(weight_divi, 2.0, 0.05)
@@ -64,17 +71,17 @@ func shoot():
 	instance.knockback = Vector2(-100,0)
 	instance.knock_replace = false
 	instance.stun = 3
-	instance.speed = 3000.0
-	instance.dietime = 20.0
+	instance.speed = 4000.0
+	instance.dietime = 10.0
 	instance.gravity = 0.0
 	instance.deaccel = 0.0
 	instance.rotation_degrees = 345 +randi()%30
-	instance.scale = Vector2(1,1)
+	instance.scale = Vector2(1,1.25)
 	instance.facing = holder.facing if holder else facing
 	
 	if holder:
 		instance.add_collision_exception_with(holder)
-	instance.position = position + Vector2(75*facing,0)
+	instance.position = position + Vector2(75*facing,5)
 	get_parent().add_child(instance)
 
 

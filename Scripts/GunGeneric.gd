@@ -56,7 +56,7 @@ func _physics_process(_delta):
 				#if Input.is_action_just_pressed("shoot"+str(holder.player)) or (auto_shoot && (Input.is_action_just_pressed("shoot"+str(holder.player)) or (($AniPlay.current_animation != "shoot") && Input.is_action_pressed("shoot"+str(holder.player))))):
 				if (!wait_shoot or (wait_shoot && $AniPlay.current_animation != "shoot")) && ( Input.is_action_just_pressed("shoot"+str(holder.player))    or    (auto_refire && Input.is_action_just_released("shoot"+str(holder.player)) && $AniPlay.current_animation == "shoot")    or    (auto_shoot && (Input.is_action_just_pressed("shoot"+str(holder.player)) or (($AniPlay.current_animation != "shoot") && Input.is_action_pressed("shoot"+str(holder.player))))) ):
 					
-					close_check()
+					if Input.is_action_just_pressed("shoot"+str(holder.player)): close_check()
 					if (holder.anibusy != 3) && (int(position.y - holder.position.y) < -10):
 						#print(position,"  ",holder.position,"   ",position-holder.position)
 						ammo_in -= 1
@@ -93,7 +93,7 @@ func _physics_process(_delta):
 			else:
 				if ((auto_reload or auto_shoot) && Input.is_action_pressed("shoot"+str(holder.player))) or Input.is_action_just_pressed("shoot"+str(holder.player)):
 					
-					close_check()
+					if Input.is_action_just_pressed("shoot"+str(holder.player)): close_check()
 					if holder.anibusy != 3:
 						$AniPlay.play("empty")
 					
@@ -142,14 +142,15 @@ func _process(_delta):
 			$AniPlay.play("idle")
 		
 		
-		match handstate:
-			1: position = holder.position + (holder.pos_onehanded[holder.frame]*Vector2(holder.facing,1))
-			2: position = holder.position + (holder.pos_reload[holder.frame]*Vector2(holder.facing,1))
-			3: position = holder.position + (holder.pos_hip[holder.frame]*Vector2(holder.facing,1))
-			4: position = holder.position + (holder.pos_hip[holder.frame]*Vector2(holder.facing,1))
-			5: position = holder.position + (holder.pos_highaim[holder.frame]*Vector2(holder.facing,1))
-			6: position = holder.position + (holder.pos_chaingun[holder.frame]*Vector2(holder.facing,1))
-			
+		if (holder.pos_onehanded[holder.frame] != null) && (holder.pos_onehanded[holder.frame] != Vector2(0,0)):
+			match handstate:
+				1: position = holder.position + (holder.pos_onehanded[holder.frame]*Vector2(holder.facing,1))
+				2: position = holder.position + (holder.pos_reload[holder.frame]*Vector2(holder.facing,1))
+				3: position = holder.position + (holder.pos_hip[holder.frame]*Vector2(holder.facing,1))
+				4: position = holder.position + (holder.pos_hip[holder.frame]*Vector2(holder.facing,1))
+				5: position = holder.position + (holder.pos_highaim[holder.frame]*Vector2(holder.facing,1))
+				6: position = holder.position + (holder.pos_chaingun[holder.frame]*Vector2(holder.facing,1))
+		
 		#dposition = holder.position + (holder.pos_onehanded[holder.frame]*Vector2(holder.facing,1))
 		velocity = Vector2(0,0)
 		$Sprite.rotation_degrees = 0
