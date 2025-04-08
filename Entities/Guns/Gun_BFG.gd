@@ -56,7 +56,6 @@ func release():
 	get_parent().add_child(instance)
 
 func reload():
-	$Sfx.reload()
 	if ammo_out > ammo_size:
 		ammo_in = ammo_size
 		ammo_out -= ammo_size

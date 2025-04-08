@@ -67,7 +67,7 @@ func shoot():
 	var instance = projectile.instantiate()
 	
 	instance.holder = holder
-	instance.damage = 7.5
+	instance.damage = 10
 	instance.knockback = Vector2(-100,0)
 	instance.knock_replace = false
 	instance.stun = 3

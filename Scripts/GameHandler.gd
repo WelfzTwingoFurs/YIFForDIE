@@ -54,7 +54,7 @@ func prepare_round():
 	else:
 		cam.focus = 1
 		#var playernow = player.instantiate()
-		var playernow = characters[skins[0]].instantiate().instantiate()
+		var playernow = characters[skins[0]].instantiate()
 		playernow.player = 1
 		playernow.position = scenario.spawnpoints[players-1]
 		playernow.low_limit = scenario.edges.w
@@ -65,8 +65,8 @@ var scenario = null
 var cam = null
 var gamers = []
 
-var scenes = [preload("res://Levels/level2.tscn"), preload("res://Levels/level1.tscn"), preload("res://Levels/level_test.tscn")]
-var player = preload("res://Entities/PlayerStud/playerStud.tscn")
+#var scenes = [preload("res://Levels/level_test.tscn")]
+var scenes = [preload("res://Levels/level_test.tscn"), preload("res://Levels/level2.tscn"), preload("res://Levels/level1.tscn"), preload("res://Levels/castle.tscn"), preload("res://Levels/fort.tscn"), preload("res://Levels/buildings.tscn")]
 var camera = preload("res://Entities/camera.tscn")
 
 var characters = [preload("res://Entities/PlayerStud/playerStud.tscn"), preload("res://Entities/PlayerGaben/playerGaben.tscn")]
