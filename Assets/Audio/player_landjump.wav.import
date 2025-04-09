@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://degbydnai5cvw"
-path="res://.godot/imported/sfx_landjump.wav-33ea4d0e5dff9eedbb64d050320a37d6.sample"
+path="res://.godot/imported/player_landjump.wav-17f184bd4ffe9d0955ab4159968ee088.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/sfx_landjump.wav"
-dest_files=["res://.godot/imported/sfx_landjump.wav-33ea4d0e5dff9eedbb64d050320a37d6.sample"]
+source_file="res://Assets/Audio/player_landjump.wav"
+dest_files=["res://.godot/imported/player_landjump.wav-17f184bd4ffe9d0955ab4159968ee088.sample"]
 
 [params]
 

@@ -964,6 +964,7 @@ size = Vector2(51.9466, 109.012)
 
 [node name="PlayerStud" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
+floor_snap_length = 10.0
 script = ExtResource("1_8frao")
 character_name = "Stud Stallion"
 frame = 19

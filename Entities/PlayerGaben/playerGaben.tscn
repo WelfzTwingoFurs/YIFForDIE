@@ -929,6 +929,7 @@ size = Vector2(51.9466, 109.012)
 
 [node name="PlayerGaben" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
+floor_snap_length = 10.0
 script = ExtResource("1_4nhak")
 character_name = "Gaben Freeware"
 pos_chaingun = [Vector2(43, -72), Vector2(50, -57), Vector2(44, -61), Vector2(52, -55), Vector2(46, -60), Vector2(47, -47), Vector2(48, -65), Vector2(46, -58), Vector2(39, -60), null, Vector2(43, -72), Vector2(53, -16), Vector2(58, -17), null, null, null, Vector2(51, -68), Vector2(41, -56), null, Vector2(45, -73), null, null, null, Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), null, null, null, null]

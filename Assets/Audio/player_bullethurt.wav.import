@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cnmhwqgrqhpwb"
-path="res://.godot/imported/sfx_bullethurt.wav-a8ee5c6781fe062df0db1d0f71821d20.sample"
+path="res://.godot/imported/player_bullethurt.wav-6d9cd81b5c10b2a97cc4a49527192f2e.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/sfx_bullethurt.wav"
-dest_files=["res://.godot/imported/sfx_bullethurt.wav-a8ee5c6781fe062df0db1d0f71821d20.sample"]
+source_file="res://Assets/Audio/player_bullethurt.wav"
+dest_files=["res://.godot/imported/player_bullethurt.wav-6d9cd81b5c10b2a97cc4a49527192f2e.sample"]
 
 [params]
 
