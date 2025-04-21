@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpgfkj4jtctsa"
-path="res://.godot/imported/tileauto_bricksrough.png-bb711c98610ce192ecb5577e02a1a5c9.ctex"
+uid="uid://w0m4vn8yvc1w"
+path="res://.godot/imported/test.png-764e88ee899d372f8b6ef43d83501de5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Scenario/tileauto_bricksrough.png"
-dest_files=["res://.godot/imported/tileauto_bricksrough.png-bb711c98610ce192ecb5577e02a1a5c9.ctex"]
+source_file="res://Assets/test.png"
+dest_files=["res://.godot/imported/test.png-764e88ee899d372f8b6ef43d83501de5.ctex"]
 
 [params]
 

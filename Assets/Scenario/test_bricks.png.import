@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w0m4vn8yvc1w"
-path="res://.godot/imported/gradientbigcomplex.png-4429a7d8c5b49fc75b4d2f1abac52063.ctex"
+uid="uid://bx3d1sa3nbnrl"
+path="res://.godot/imported/test_bricks.png-999d41646f726cb26566e12c43bf34a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TEST/gradientbigcomplex.png"
-dest_files=["res://.godot/imported/gradientbigcomplex.png-4429a7d8c5b49fc75b4d2f1abac52063.ctex"]
+source_file="res://Assets/Scenario/test_bricks.png"
+dest_files=["res://.godot/imported/test_bricks.png-999d41646f726cb26566e12c43bf34a9.ctex"]
 
 [params]
 

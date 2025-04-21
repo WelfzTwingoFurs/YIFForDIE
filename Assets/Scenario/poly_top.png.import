@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgqyhk1beu5vw"
-path="res://.godot/imported/top.png-0cc0808d4c0dd1252e2235e728511c2a.ctex"
+path="res://.godot/imported/poly_top.png-808e39777fe890454e8e3381e0bc22f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TEST/top.png"
-dest_files=["res://.godot/imported/top.png-0cc0808d4c0dd1252e2235e728511c2a.ctex"]
+source_file="res://Assets/Scenario/poly_top.png"
+dest_files=["res://.godot/imported/poly_top.png-808e39777fe890454e8e3381e0bc22f8.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm41nhacqdesf"
-path="res://.godot/imported/tileauto_bricksrough_bg.png-2ae5a0c3917c59271505b6a82749d429.ctex"
+uid="uid://byfwyupu71dnw"
+path="res://.godot/imported/pattern_woodtile.png-750d25cfa35d72fdcccda0746ccc7263.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Scenario/tileauto_bricksrough_bg.png"
-dest_files=["res://.godot/imported/tileauto_bricksrough_bg.png-2ae5a0c3917c59271505b6a82749d429.ctex"]
+source_file="res://Assets/Scenario/pattern_woodtile.png"
+dest_files=["res://.godot/imported/pattern_woodtile.png-750d25cfa35d72fdcccda0746ccc7263.ctex"]
 
 [params]
 

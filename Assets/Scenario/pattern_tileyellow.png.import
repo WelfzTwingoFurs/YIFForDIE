@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7cju5yprq2i2"
-path="res://.godot/imported/line.png-94c6c176082babc375b79154d229506b.ctex"
+uid="uid://dg3epnevw6qfx"
+path="res://.godot/imported/pattern_tileyellow.png-d57313e176e17eaab810fff7fb6758d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TEST/line.png"
-dest_files=["res://.godot/imported/line.png-94c6c176082babc375b79154d229506b.ctex"]
+source_file="res://Assets/Scenario/pattern_tileyellow.png"
+dest_files=["res://.godot/imported/pattern_tileyellow.png-d57313e176e17eaab810fff7fb6758d7.ctex"]
 
 [params]
 

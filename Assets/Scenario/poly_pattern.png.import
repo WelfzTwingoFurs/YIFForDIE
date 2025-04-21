@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byfmdrvfytjq1"
-path="res://.godot/imported/pattern.png-7f7bb8a64fe4e8b7be0752e5d6af48f1.ctex"
+path="res://.godot/imported/poly_pattern.png-d6f8d93fa72ccd3590d581b7962e30a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TEST/pattern.png"
-dest_files=["res://.godot/imported/pattern.png-7f7bb8a64fe4e8b7be0752e5d6af48f1.ctex"]
+source_file="res://Assets/Scenario/poly_pattern.png"
+dest_files=["res://.godot/imported/poly_pattern.png-d6f8d93fa72ccd3590d581b7962e30a0.ctex"]
 
 [params]
 

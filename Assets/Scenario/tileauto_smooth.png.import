@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm0s181cprvc4"
-path="res://.godot/imported/lineb.png-40e02a0ea5c440e55cb10c8b6d51b5ad.ctex"
+uid="uid://nuncay252675"
+path="res://.godot/imported/tileauto_smooth.png-2af1ad1ce1c01dd475059b9bc3842032.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TEST/lineb.png"
-dest_files=["res://.godot/imported/lineb.png-40e02a0ea5c440e55cb10c8b6d51b5ad.ctex"]
+source_file="res://Assets/Scenario/tileauto_smooth.png"
+dest_files=["res://.godot/imported/tileauto_smooth.png-2af1ad1ce1c01dd475059b9bc3842032.ctex"]
 
 [params]
 

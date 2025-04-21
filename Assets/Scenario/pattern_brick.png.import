@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfins7vrwq2ff"
-path="res://.godot/imported/tilefode.png-1c9ac205801e2a95fbda40b5ffb5dfd3.ctex"
+uid="uid://dixelq6mlbyxq"
+path="res://.godot/imported/pattern_brick.png-f7e338d870a9f56e75b321fd8c451e4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilefode.png"
-dest_files=["res://.godot/imported/tilefode.png-1c9ac205801e2a95fbda40b5ffb5dfd3.ctex"]
+source_file="res://Assets/Scenario/pattern_brick.png"
+dest_files=["res://.godot/imported/pattern_brick.png-f7e338d870a9f56e75b321fd8c451e4b.ctex"]
 
 [params]
 

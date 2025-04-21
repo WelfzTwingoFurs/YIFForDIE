@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nuncay252675"
-path="res://.godot/imported/tileauto_smoothconcrete.png-04533e966bc8cfcc5f64dca072815daa.ctex"
+uid="uid://bwrufh4qanah7"
+path="res://.godot/imported/cut out.png-a8614cebec3728fa79b3eeebec042c36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Scenario/tileauto_smoothconcrete.png"
-dest_files=["res://.godot/imported/tileauto_smoothconcrete.png-04533e966bc8cfcc5f64dca072815daa.ctex"]
+source_file="res://Assets/Scenario/cut out.png"
+dest_files=["res://.godot/imported/cut out.png-a8614cebec3728fa79b3eeebec042c36.ctex"]
 
 [params]
 
