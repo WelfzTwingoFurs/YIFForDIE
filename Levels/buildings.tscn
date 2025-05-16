@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnhyh2d6u3pwn"]
 
 [ext_resource type="Script" path="res://Levels/LevelScript.gd" id="1_havyg"]
-[ext_resource type="PackedScene" uid="uid://b6amf2ybssyrp" path="res://Assets/tileauto.tscn" id="2_2es7p"]
+[ext_resource type="PackedScene" uid="uid://b6amf2ybssyrp" path="res://zOLD/Assets/tileauto.tscn" id="2_2es7p"]
 [ext_resource type="Texture2D" uid="uid://7xamq8jt3ci2" path="res://Assets/Guns/gun_revolver.png" id="3_7m3pj"]
 [ext_resource type="Script" path="res://Scripts/GunSpawner.gd" id="4_vyu2r"]
 [ext_resource type="PackedScene" uid="uid://b4ethhcu0cjoq" path="res://Entities/Guns/Gun_Revolver.tscn" id="5_twlew"]
